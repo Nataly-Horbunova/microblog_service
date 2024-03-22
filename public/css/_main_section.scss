@@ -1,5 +1,5 @@
 main{
-    margin-top: 130px;
+    margin: 160px 0 60px;
     }
 
 .hero-section{
@@ -33,13 +33,49 @@ main{
 }
 
 .posts-section {
-    margin-top: 30px;
+
+    .add-post-modal-tittle{
+        font-family: 'Rubik', sans-serif;
+        font-size: $fz-xm;
+        line-height: $lh-m;
+        font-weight: 500;
+    }
+
+    .post-form{
+        &-label{
+            margin-bottom: 10px;
+        }
+
+        &-control{
+            @extend %form-control;
+
+            &:focus{
+                @extend %form-control-focus;
+            }
+        }
+
+        textarea.post-form-control{
+            min-height: 200px;
+        }
+    }
 
     .posts-list{
-        padding-left: 0;
-
         &-item{
             margin-top: 40px;
+
+            .tittle-wrapper{
+                @include flex(flex-start, center, 30px);
+
+                & i{
+                    color: $primary-color;
+                    cursor: pointer;
+                    transition: .2s;
+
+                    &:hover{
+                        color: transparentize($text-color-primary, 0.3);
+                    }
+                }
+            }
 
             .post-tittle{
                 font-family: 'Rubik', sans-serif;
@@ -59,10 +95,16 @@ main{
             .post-text-wrapper{
                 margin-top: 10px;
 
+                .post-text{
+                    font-family: 'Segoe UI', sans-serif;
+                    font-size: $fz-xs;
+                    line-height: $lh-m;
+                    margin-bottom: 10px;
+                }
+
                 .post-text-collapse{
                     font-size: $fz-xxs;
                     color: $primary-color;
-                    text-decoration: none;
                 }
 
                 p.collapse:not(.show) {
@@ -88,11 +130,12 @@ main{
 
                 &.i {
                     font-size: $fz-xs;
-
                 }
             }
 
             .comments-list{
+                padding-left: 30px;
+
                 .comments-list-item{
                         margin-top: 20px;
 
@@ -105,9 +148,72 @@ main{
                     }
 
                     .comment-text{
+                        margin-top: 4px;
+                        font-family: 'Segoe UI', sans-serif;
+                    }
+                }
+            }
+
+            .comment-form{
+                margin-top: 30px;
+                padding-left: 30px;
+
+                &-label{
+                    margin-bottom: 10px;
+                    font-weight: 500;
+                }
+
+                &-control{
+                    @extend %form-control;
+
+                    &:focus{
+                        @extend %form-control-focus;
                     }
                 }
             }
         }
     }
 }
+
+.login-container {
+    @include flex (center, center);
+
+    .login-form{
+        flex-basis: 300px;
+
+        &-label{
+            margin-bottom: 10px;
+        }
+
+        &-control{
+            @extend %form-control;
+
+            &:focus{
+                @extend %form-control-focus;
+            }
+        }
+    }
+}
+
+.register-container {
+    @include flex (center, center);
+
+    .register-form{
+        flex-basis: 300px;
+
+        &-label{
+            margin-bottom: 10px;
+        }
+
+        &-control{
+            @extend %form-control;
+
+            &:focus{
+                @extend %form-control-focus;
+            }
+        }
+    }
+}
+
+
+

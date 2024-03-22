@@ -3,21 +3,24 @@
   }
   
   body {
+    @include flex(flex-start, stretch, 0, column);
     margin: 0;
-    font-family: 'Krub', sans-serif;
+    font-family: 'Rubik', sans-serif;
     background-color: $bg-color;
     color: $text-color-primary;
     font-size: $fz-xs;
     line-height: $lh-s;
     scroll-behavior: smooth;
+    min-height: 100vh;
   }
   
   .container {
+
     margin: 0 auto;
     max-width: 1400px;
     padding: 0 clamp(16px, calc(40 / 1400 * 100vw), 40px);
   }  
- 
+
   p, h1, h2, h3, h4 {
     margin: 0;
   }
@@ -63,6 +66,8 @@
     }
   }  
 
-  .divider{
-
+  #error{
+    font-size: $fz-xxs;
+    color: $error-color;
+    margin-top: 4px;
   }

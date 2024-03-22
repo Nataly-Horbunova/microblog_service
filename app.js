@@ -20,5 +20,12 @@ app.get('/user-posts', (req, res)=> {
     res.render('user_posts');
 });
 
+app.get('/login', (req, res) => {
+    res.render('login');
+})
+
+app.get('/register', (req, res) => {
+    res.render('register');
+})
 
 app.listen(port, console.log(`Server is running on port ${port}`));

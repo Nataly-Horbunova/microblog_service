@@ -1,5 +1,3 @@
-@import './variables';
-
 @mixin flex($jc:null, $ai:null, $gap:null, $fd: null) {
     display: flex;
     justify-content: $jc;
@@ -12,7 +10,7 @@
   @include flex(flex-start, center, 10px);
   margin-top: 10px;
   font-size: $fz-xxs;
-  color: lighten($text-color-primary, 30%);
+  color: lighten($text-color-primary, 50%);
 }
 
 %divider{
@@ -21,3 +19,19 @@
   border-radius: 50%;
   background-color: lighten($text-color-primary, 30%);
 }
+
+
+  %form-control{
+      display: block;
+      width: 100%;
+      border-width: 1px;
+      border-style: solid;
+      border-radius: 3px;
+      resize: none;
+  }
+  
+  %form-control-focus{
+          border-color: $primary-color;
+          box-shadow: none;
+      }
+
