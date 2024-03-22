@@ -21,27 +21,34 @@
     <%- include('./layouts/header') %>
         <main>
             <div class="container register-container">
-                <form method="post" class="register-form">
-                    <div class="mb-3">
-                        <label for="user_name" class="register-form-label">Username</label>
-                        <input type="text" class="form-control register-form-control" name="userName" id="user_name"
-                            required>
-                        <div id="error"></div>
+                <div class="register-wrapper">
+                                        <form method="post" class="register-form">
+                        <div class="mb-3">
+                            <label for="user_name" class="register-form-label">Username</label>
+                            <input type="text" class="form-control register-form-control" name="userName" id="user_name"
+                                required>
+                            <div id="error"></div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="user_password" class="register-form-label">Password</label>
+                            <input type="password" class="form-control register-form-control" name="password"
+                                id="user_password" required>
+                            <div id="error"></div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="user_confirm_password" class="register-form-label">Confirm password</label>
+                            <input type="password" class="form-control register-form-control" name="password"
+                                id="user_confirm_password" required>
+                            <div id="error"></div>
+                        </div>
+                        <button type="submit" class="button button-primary register-button">Register</button>
+                    </form>
+                    <div class="login-wrapper">
+                        <span class="login-text">Already have an account?</span>
+                        <a href="/login" class="login-link">Go to login in</a>
                     </div>
-                    <div class="mb-3">
-                        <label for="user_password" class="register-form-label">Password</label>
-                        <input type="password" class="form-control register-form-control" name="password"
-                            id="user_password" required>
-                        <div id="error"></div>
-                    </div>
-                    <div class="mb-3">
-                        <label for="user_confirm_password" class="register-form-label">Confirm password</label>
-                        <input type="password" class="form-control register-form-control" name="password"
-                            id="user_confirm_password" required>
-                        <div id="error"></div>
-                    </div>
-                    <button type="submit" class="button button-primary">Register</button>
-                </form>
+
+                </div>
             </div>
 
 

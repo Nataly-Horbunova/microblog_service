@@ -58,7 +58,7 @@
   font-weight: bold;
   font-style: normal;
 }
-.posts-section .posts-list-item .comments-list .comments-list-item .comment-info, .posts-section .posts-list-item .post-info {
+main .posts-section .posts-list-item .comments-list .comments-list-item .comment-info, main .posts-section .posts-list-item .post-info {
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -68,14 +68,14 @@
   color: #929da4;
 }
 
-.posts-section .posts-list-item .comments-list .comments-list-item .comment-info .comment-info-divider, .posts-section .posts-list-item .post-info .post-info-divider {
+main .posts-section .posts-list-item .comments-list .comments-list-item .comment-info .comment-info-divider, main .posts-section .posts-list-item .post-info .post-info-divider {
   width: 3px;
   height: 3px;
   border-radius: 50%;
   background-color: #5f6a71;
 }
 
-.register-container .register-form-control, .login-container .login-form-control, .posts-section .posts-list-item .comment-form-control, .posts-section .post-form-control {
+.register-container .register-wrapper .register-form-control, .login-container .login-wrapper .login-form-control, main .posts-section .posts-list-item .comment-form-control, main .posts-section .post-form-control {
   display: block;
   width: 100%;
   border-width: 1px;
@@ -84,7 +84,7 @@
   resize: none;
 }
 
-.register-container .register-form-control:focus, .login-container .login-form-control:focus, .posts-section .posts-list-item .comment-form-control:focus, .posts-section .post-form-control:focus {
+.register-container .register-wrapper .register-form-control:focus, .login-container .login-wrapper .login-form-control:focus, main .posts-section .posts-list-item .comment-form-control:focus, main .posts-section .post-form-control:focus {
   border-color: #166AEA;
   box-shadow: none;
 }
@@ -211,30 +211,29 @@ ul {
 main {
   margin: 160px 0 60px;
 }
-
-.hero-section {
+main .hero-section {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.hero-section .hero-text-wrapper {
+main .hero-section .hero-text-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-basis: 35%;
   padding: 30px;
 }
-.hero-section .hero-text-wrapper .hero-text {
+main .hero-section .hero-text-wrapper .hero-text {
   font-family: "Rubik", sans-serif;
   font-size: clamp(26px, 2.9166666667vw, 35px);
   line-height: 150%;
 }
-.hero-section .hero-img-wrapper {
+main .hero-section .hero-img-wrapper {
   flex-basis: 65%;
   overflow: hidden;
   align-self: stretch;
 }
-.hero-section .hero-img-wrapper .hero-img {
+main .hero-section .hero-img-wrapper .hero-img {
   display: block;
   -o-object-fit: cover;
      object-fit: cover;
@@ -242,115 +241,178 @@ main {
   height: 100%;
   opacity: 0.9;
 }
-
-.posts-section .add-post-modal-tittle {
+main .posts-section .add-post-modal-tittle {
   font-family: "Rubik", sans-serif;
   font-size: clamp(22px, 2.0833333333vw, 25px);
   line-height: 133%;
   font-weight: 500;
 }
-.posts-section .post-form-label {
+main .posts-section .post-form-label {
   margin-bottom: 10px;
 }
-.posts-section .post-form textarea.post-form-control {
+main .posts-section .post-form textarea.post-form-control {
   min-height: 200px;
 }
-.posts-section .posts-list-item {
+main .posts-section .posts-list-item {
   margin-top: 40px;
 }
-.posts-section .posts-list-item .tittle-wrapper {
+main .posts-section .posts-list-item .tittle-wrapper {
   display: flex;
   justify-content: flex-start;
   align-items: center;
   gap: 30px;
 }
-.posts-section .posts-list-item .tittle-wrapper i {
+main .posts-section .posts-list-item .tittle-wrapper i {
   color: #166AEA;
   cursor: pointer;
   transition: 0.2s;
 }
-.posts-section .posts-list-item .tittle-wrapper i:hover {
+main .posts-section .posts-list-item .tittle-wrapper i:hover {
   color: rgba(25, 28, 30, 0.7);
 }
-.posts-section .posts-list-item .post-tittle {
+main .posts-section .posts-list-item .post-tittle {
   font-family: "Rubik", sans-serif;
   font-size: clamp(28px, 2.5vw, 30px);
   line-height: 133%;
   font-weight: 400;
 }
-.posts-section .posts-list-item .post-text-wrapper {
+main .posts-section .posts-list-item .post-text-wrapper {
   margin-top: 10px;
 }
-.posts-section .posts-list-item .post-text-wrapper .post-text {
+main .posts-section .posts-list-item .post-text-wrapper .post-text {
   font-family: "Segoe UI", sans-serif;
   font-size: clamp(14px, 1.3333333333vw, 16px);
   line-height: 133%;
   margin-bottom: 10px;
 }
-.posts-section .posts-list-item .post-text-wrapper .post-text-collapse {
+main .posts-section .posts-list-item .post-text-wrapper .post-text-collapse {
   font-size: clamp(12px, 1.1666666667vw, 14px);
   color: #166AEA;
 }
-.posts-section .posts-list-item .post-text-wrapper p.collapse:not(.show) {
+main .posts-section .posts-list-item .post-text-wrapper p.collapse:not(.show) {
   overflow: hidden;
   display: -webkit-box;
   -webkit-line-clamp: 8;
   -webkit-box-orient: vertical;
 }
-.posts-section .posts-list-item .post-text-wrapper a.collapsed:after {
+main .posts-section .posts-list-item .post-text-wrapper a.collapsed:after {
   content: "+ Read More";
 }
-.posts-section .posts-list-item .post-text-wrapper a:not(.collapsed):after {
+main .posts-section .posts-list-item .post-text-wrapper a:not(.collapsed):after {
   content: "- Read Less";
 }
-.posts-section .posts-list-item .comments-tittle {
+main .posts-section .posts-list-item .comments-tittle {
   margin-top: 10px;
   font-size: clamp(14px, 1.3333333333vw, 16px);
   cursor: pointer;
 }
-.posts-section .posts-list-item .comments-tittle.i {
+main .posts-section .posts-list-item .comments-tittle.i {
   font-size: clamp(14px, 1.3333333333vw, 16px);
 }
-.posts-section .posts-list-item .comments-list {
+main .posts-section .posts-list-item .comments-list {
   padding-left: 30px;
 }
-.posts-section .posts-list-item .comments-list .comments-list-item {
+main .posts-section .posts-list-item .comments-list .comments-list-item {
   margin-top: 20px;
 }
-.posts-section .posts-list-item .comments-list .comments-list-item .comment-text {
+main .posts-section .posts-list-item .comments-list .comments-list-item .comment-text {
   margin-top: 4px;
   font-family: "Segoe UI", sans-serif;
 }
-.posts-section .posts-list-item .comment-form {
+main .posts-section .posts-list-item .comment-form {
   margin-top: 30px;
   padding-left: 30px;
 }
-.posts-section .posts-list-item .comment-form-label {
+main .posts-section .posts-list-item .comment-form-label {
   margin-bottom: 10px;
   font-weight: 500;
 }
+.admin-container .users-list-tittle {
+  font-family: "Rubik", sans-serif;
+  font-size: clamp(28px, 2.5vw, 30px);
+  line-height: 133%;
+  font-weight: 400;
+}
+.admin-container .users-list {
+  margin-top: 30px;
+}
+.admin-container .users-list-item {
+  margin-top: 10px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: stretch;
+  gap: 10px;
+}
+.admin-container .users-list-item .user-name {
+  flex-basis: 200px;
+  padding: 20px;
+  background-color: rgba(22, 106, 234, 0.1);
+}
+.admin-container .users-list-item i {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-basis: 80px;
+  padding: 20px;
+  background-color: rgba(22, 106, 234, 0.1);
+  color: #166AEA;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.admin-container .users-list-item i:hover {
+  color: rgba(25, 28, 30, 0.7);
+}
+
 .login-container {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.login-container .login-form {
+.login-container .login-wrapper .login-form {
   flex-basis: 300px;
 }
-.login-container .login-form-label {
+.login-container .login-wrapper .login-form-label {
   margin-bottom: 10px;
 }
+.login-container .login-wrapper .login-form .login-button {
+  width: 100%;
+}
+.login-container .login-wrapper .register-wrapper {
+  margin-top: 20px;
+}
+.login-container .login-wrapper .register-wrapper .register-link {
+  color: #166AEA;
+  transition: 0.2s;
+}
+.login-container .login-wrapper .register-wrapper .register-link:hover {
+  color: #4588ee;
+}
+
 .register-container {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.register-container .register-form {
+.register-container .register-wrapper .register-form {
   flex-basis: 300px;
 }
-.register-container .register-form-label {
+.register-container .register-wrapper .register-form-label {
   margin-bottom: 10px;
 }
+.register-container .register-wrapper .register-form .register-button {
+  width: 100%;
+}
+.register-container .register-wrapper .login-wrapper {
+  margin-top: 20px;
+}
+.register-container .register-wrapper .login-wrapper .login-link {
+  color: #166AEA;
+  transition: 0.2s;
+}
+.register-container .register-wrapper .login-wrapper .login-link:hover {
+  color: #4588ee;
+}
+
 .footer {
   margin-top: auto;
   height: 84px;

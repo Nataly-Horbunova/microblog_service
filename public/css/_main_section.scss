@@ -1,215 +1,175 @@
 main{
     margin: 160px 0 60px;
-    }
+    
+    .hero-section{
+        @include flex(space-between, center);
 
-.hero-section{
-    @include flex(space-between, center);
+        .hero-text-wrapper{
+            @include flex(center, center);
+            flex-basis: 35%;
+            padding: 30px;
 
-    .hero-text-wrapper{
-        @include flex(center, center);
-        flex-basis: 35%;
-        padding: 30px;
-
-        .hero-text{
-            font-family: 'Rubik', sans-serif;
-            font-size: $fz-l;
-            line-height: $lh-l;
-        }
-    }
-
-    .hero-img-wrapper{
-        flex-basis: 65%;
-        overflow: hidden;
-        align-self: stretch;
-
-        .hero-img{
-            display: block;
-            object-fit: cover;
-            width: 100%;
-            height: 100%;
-            opacity: 0.9;
-        }
-    }
-}
-
-.posts-section {
-
-    .add-post-modal-tittle{
-        font-family: 'Rubik', sans-serif;
-        font-size: $fz-xm;
-        line-height: $lh-m;
-        font-weight: 500;
-    }
-
-    .post-form{
-        &-label{
-            margin-bottom: 10px;
-        }
-
-        &-control{
-            @extend %form-control;
-
-            &:focus{
-                @extend %form-control-focus;
-            }
-        }
-
-        textarea.post-form-control{
-            min-height: 200px;
-        }
-    }
-
-    .posts-list{
-        &-item{
-            margin-top: 40px;
-
-            .tittle-wrapper{
-                @include flex(flex-start, center, 30px);
-
-                & i{
-                    color: $primary-color;
-                    cursor: pointer;
-                    transition: .2s;
-
-                    &:hover{
-                        color: transparentize($text-color-primary, 0.3);
-                    }
-                }
-            }
-
-            .post-tittle{
+            .hero-text{
                 font-family: 'Rubik', sans-serif;
-                font-size: $fz-m;
-                line-height: $lh-m;
-                font-weight: 400;    
+                font-size: $fz-l;
+                line-height: $lh-l;
+            }
+        }
+
+        .hero-img-wrapper{
+            flex-basis: 65%;
+            overflow: hidden;
+            align-self: stretch;
+
+            .hero-img{
+                display: block;
+                object-fit: cover;
+                width: 100%;
+                height: 100%;
+                opacity: 0.9;
+            }
+        }
+    }
+
+    .posts-section {
+
+        .add-post-modal-tittle{
+            font-family: 'Rubik', sans-serif;
+            font-size: $fz-xm;
+            line-height: $lh-m;
+            font-weight: 500;
+        }
+
+        .post-form{
+            &-label{
+                margin-bottom: 10px;
             }
 
-            .post-info{
-                @extend %user-info;
+            &-control{
+                @extend %form-control;
 
-                .post-info-divider{
-                    @extend %divider;
-                }
-            }
-
-            .post-text-wrapper{
-                margin-top: 10px;
-
-                .post-text{
-                    font-family: 'Segoe UI', sans-serif;
-                    font-size: $fz-xs;
-                    line-height: $lh-m;
-                    margin-bottom: 10px;
-                }
-
-                .post-text-collapse{
-                    font-size: $fz-xxs;
-                    color: $primary-color;
-                }
-
-                p.collapse:not(.show) {
-                    overflow: hidden;
-                    display: -webkit-box;
-                    -webkit-line-clamp: 8;  
-                    -webkit-box-orient: vertical;  
-                }
-        
-                a.collapsed:after  {
-                    content: '+ Read More';
-                }
-        
-                a:not(.collapsed):after {
-                    content: '- Read Less';
-                }
-            }
-
-            .comments-tittle{
-                margin-top: 10px;
-                font-size: $fz-xs;
-                cursor: pointer;
-
-                &.i {
-                    font-size: $fz-xs;
+                &:focus{
+                    @extend %form-control-focus;
                 }
             }
 
-            .comments-list{
-                padding-left: 30px;
+            textarea.post-form-control{
+                min-height: 200px;
+            }
+        }
 
-                .comments-list-item{
-                        margin-top: 20px;
+        .posts-list{
+            &-item{
+                margin-top: 40px;
 
-                    .comment-info{
-                        @extend %user-info;
+                .tittle-wrapper{
+                    @include flex(flex-start, center, 30px);
 
-                        .comment-info-divider{
-                            @extend %divider;
+                    & i{
+                        color: $primary-color;
+                        cursor: pointer;
+                        transition: .2s;
+
+                        &:hover{
+                            color: transparentize($text-color-primary, 0.3);
                         }
                     }
+                }
 
-                    .comment-text{
-                        margin-top: 4px;
+                .post-tittle{
+                    font-family: 'Rubik', sans-serif;
+                    font-size: $fz-m;
+                    line-height: $lh-m;
+                    font-weight: 400;    
+                }
+
+                .post-info{
+                    @extend %user-info;
+
+                    .post-info-divider{
+                        @extend %divider;
+                    }
+                }
+
+                .post-text-wrapper{
+                    margin-top: 10px;
+
+                    .post-text{
                         font-family: 'Segoe UI', sans-serif;
+                        font-size: $fz-xs;
+                        line-height: $lh-m;
+                        margin-bottom: 10px;
+                    }
+
+                    .post-text-collapse{
+                        font-size: $fz-xxs;
+                        color: $primary-color;
+                    }
+
+                    p.collapse:not(.show) {
+                        overflow: hidden;
+                        display: -webkit-box;
+                        -webkit-line-clamp: 8;  
+                        -webkit-box-orient: vertical;  
+                    }
+            
+                    a.collapsed:after  {
+                        content: '+ Read More';
+                    }
+            
+                    a:not(.collapsed):after {
+                        content: '- Read Less';
                     }
                 }
-            }
 
-            .comment-form{
-                margin-top: 30px;
-                padding-left: 30px;
+                .comments-tittle{
+                    margin-top: 10px;
+                    font-size: $fz-xs;
+                    cursor: pointer;
 
-                &-label{
-                    margin-bottom: 10px;
-                    font-weight: 500;
-                }
-
-                &-control{
-                    @extend %form-control;
-
-                    &:focus{
-                        @extend %form-control-focus;
+                    &.i {
+                        font-size: $fz-xs;
                     }
                 }
-            }
-        }
-    }
-}
 
-.login-container {
-    @include flex (center, center);
+                .comments-list{
+                    padding-left: 30px;
 
-    .login-form{
-        flex-basis: 300px;
+                    .comments-list-item{
+                            margin-top: 20px;
 
-        &-label{
-            margin-bottom: 10px;
-        }
+                        .comment-info{
+                            @extend %user-info;
 
-        &-control{
-            @extend %form-control;
+                            .comment-info-divider{
+                                @extend %divider;
+                            }
+                        }
 
-            &:focus{
-                @extend %form-control-focus;
-            }
-        }
-    }
-}
+                        .comment-text{
+                            margin-top: 4px;
+                            font-family: 'Segoe UI', sans-serif;
+                        }
+                    }
+                }
 
-.register-container {
-    @include flex (center, center);
+                .comment-form{
+                    margin-top: 30px;
+                    padding-left: 30px;
 
-    .register-form{
-        flex-basis: 300px;
+                    &-label{
+                        margin-bottom: 10px;
+                        font-weight: 500;
+                    }
 
-        &-label{
-            margin-bottom: 10px;
-        }
+                    &-control{
+                        @extend %form-control;
 
-        &-control{
-            @extend %form-control;
-
-            &:focus{
-                @extend %form-control-focus;
+                        &:focus{
+                            @extend %form-control-focus;
+                        }
+                    }
+                }
             }
         }
     }

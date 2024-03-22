@@ -21,21 +21,27 @@
     <%- include('./layouts/header') %>
         <main>
             <div class="container login-container">
-                <form method="post" class="login-form">
-                    <div class="mb-3">
-                        <label for="user_name" class="login-form-label">Username</label>
-                        <input type="text" class="form-control login-form-control" name="userName" id="user_name"
-                            required>
+                <div class="login-wrapper">
+                    <form method="post" class="login-form">
+                        <div class="mb-3">
+                            <label for="user_name" class="login-form-label">Username</label>
+                            <input type="text" class="form-control login-form-control" name="userName" id="user_name"
+                                required>
+                                <div id="error"></div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="user_password" class="login-form-label">Password</label>
+                            <input type="password" class="form-control login-form-control" name="password"
+                                id="user_password" required>
                             <div id="error"></div>
+                        </div>
+                        <button type="submit" class="button button-primary login-button">Login</button>
+                    </form>
+                    <div class="register-wrapper">
+                        <span class="register-text">Don't have an account? </span>
+                        <a href="/register" class="register-link">Create one</a>
                     </div>
-                    <div class="mb-3">
-                        <label for="user_password" class="login-form-label">Password</label>
-                        <input type="password" class="form-control login-form-control" name="password"
-                            id="user_password" required>
-                        <div id="error"></div>
-                    </div>
-                    <button type="submit" class="button button-primary">Login</button>
-                </form>
+                </div>
             </div>
 
 
