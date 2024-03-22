@@ -1,0 +1,23 @@
+@import './variables';
+
+@mixin flex($jc:null, $ai:null, $gap:null, $fd: null) {
+    display: flex;
+    justify-content: $jc;
+    align-items: $ai;
+    flex-direction: $fd;
+    gap: $gap;
+  }
+
+%user-info{
+  @include flex(flex-start, center, 10px);
+  margin-top: 10px;
+  font-size: $fz-xxs;
+  color: lighten($text-color-primary, 30%);
+}
+
+%divider{
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background-color: lighten($text-color-primary, 30%);
+}

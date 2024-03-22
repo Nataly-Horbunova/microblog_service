@@ -1,0 +1,294 @@
+@font-face {
+  font-family: "Rubik";
+  src: url("../fonts/Rubik-Medium.woff2") format("woff2"), url("../fonts/Rubik-Medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Rubik";
+  src: url("../fonts/Rubik-Regular.woff2") format("woff2"), url("../fonts/Rubik-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Rubik";
+  src: url("../fonts/Rubik-MediumItalic.woff2") format("woff2"), url("../fonts/Rubik-MediumItalic.woff") format("woff");
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Rubik";
+  src: url("../fonts/Rubik-Bold.woff2") format("woff2"), url("../fonts/Rubik-Bold.woff") format("woff");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Rubik";
+  src: url("../fonts/Rubik-SemiBold.woff2") format("woff2"), url("../fonts/Rubik-SemiBold.woff") format("woff");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Krub";
+  src: url("../fonts/Krub-Medium.woff2") format("woff2"), url("../fonts/Krub-Medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Krub";
+  src: url("../fonts/Krub-SemiBold.woff2") format("woff2"), url("../fonts/Krub-SemiBold.woff") format("woff");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Krub";
+  src: url("../fonts/Krub-Bold.woff2") format("woff2"), url("../fonts/Krub-Bold.woff") format("woff");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Krub";
+  src: url("../fonts/Krub-Regular.woff2") format("woff2"), url("../fonts/Krub-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+.posts-section .posts-list-item .comments-list .comments-list-item .comment-info, .posts-section .posts-list-item .post-info {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+  font-size: clamp(12px, 1.1666666667vw, 14px);
+  color: #5f6a71;
+}
+
+.posts-section .posts-list-item .comments-list .comments-list-item .comment-info .comment-info-divider, .posts-section .posts-list-item .post-info .post-info-divider {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background-color: #5f6a71;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Krub", sans-serif;
+  background-color: #fff;
+  color: #191c1e;
+  font-size: clamp(14px, 1.3333333333vw, 16px);
+  line-height: 120%;
+  scroll-behavior: smooth;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1400px;
+  padding: 0 clamp(16px, 2.8571428571vw, 40px);
+}
+
+p, h1, h2, h3, h4 {
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.button {
+  padding: 12px 30px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: 0.2s;
+  border-width: 1px;
+  border-style: solid;
+  text-decoration: none;
+}
+
+.button-primary {
+  background-color: #166AEA;
+  border-color: #166AEA;
+  color: #fff;
+}
+.button-primary:hover {
+  background-color: #1155bc;
+}
+
+.button-secondary {
+  background-color: #fff;
+  color: #191c1e;
+  border-color: #191c1e;
+}
+.button-secondary:hover {
+  border-color: #166AEA;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  height: 102px;
+  width: 100%;
+  padding: 30px 0;
+  z-index: 100;
+  font-weight: 500;
+  background-color: #fff;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+.header-container .header-nav .nav-list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding-left: 0;
+}
+.header-container .header-nav .nav-list-item-link {
+  text-decoration: none;
+  color: inherit;
+  transition: 0.2s;
+}
+.header-container .header-nav .nav-list-item-link:hover {
+  color: #166AEA;
+}
+.header-container .header-logo-link {
+  display: block;
+  max-width: 160px;
+}
+.header-container .header-logo-link .logo-img {
+  display: block;
+  width: 100%;
+}
+.header-container .header-auth-list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding-left: 0;
+}
+
+main {
+  margin-top: 130px;
+}
+
+.hero-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.hero-section .hero-text-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-basis: 35%;
+  padding: 30px;
+}
+.hero-section .hero-text-wrapper .hero-text {
+  font-family: "Rubik", sans-serif;
+  font-size: clamp(26px, 2.9166666667vw, 35px);
+  line-height: 150%;
+}
+.hero-section .hero-img-wrapper {
+  flex-basis: 65%;
+  overflow: hidden;
+  align-self: stretch;
+}
+.hero-section .hero-img-wrapper .hero-img {
+  display: block;
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 100%;
+  height: 100%;
+  opacity: 0.9;
+}
+
+.posts-section {
+  margin-top: 30px;
+}
+.posts-section .posts-list {
+  padding-left: 0;
+}
+.posts-section .posts-list-item {
+  margin-top: 40px;
+}
+.posts-section .posts-list-item .post-tittle {
+  font-family: "Rubik", sans-serif;
+  font-size: clamp(28px, 2.5vw, 30px);
+  line-height: 133%;
+  font-weight: 400;
+}
+.posts-section .posts-list-item .post-text-wrapper {
+  margin-top: 10px;
+}
+.posts-section .posts-list-item .post-text-wrapper .post-text-collapse {
+  font-size: clamp(12px, 1.1666666667vw, 14px);
+  color: #166AEA;
+  text-decoration: none;
+}
+.posts-section .posts-list-item .post-text-wrapper p.collapse:not(.show) {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 8;
+  -webkit-box-orient: vertical;
+}
+.posts-section .posts-list-item .post-text-wrapper a.collapsed:after {
+  content: "+ Read More";
+}
+.posts-section .posts-list-item .post-text-wrapper a:not(.collapsed):after {
+  content: "- Read Less";
+}
+.posts-section .posts-list-item .comments-tittle {
+  margin-top: 10px;
+  font-size: clamp(14px, 1.3333333333vw, 16px);
+  cursor: pointer;
+}
+.posts-section .posts-list-item .comments-tittle.i {
+  font-size: clamp(14px, 1.3333333333vw, 16px);
+}
+.posts-section .posts-list-item .comments-list .comments-list-item {
+  margin-top: 20px;
+}
+.footer {
+  height: 84px;
+  margin-top: 60px;
+  padding: 30px 0;
+  box-shadow: 0px -1px 0px rgba(0, 0, 0, 0.1);
+}
+.footer .footer-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 30px;
+}
+.footer .footer-container .footer-info:not(:last-child) {
+  cursor: pointer;
+  transition: 0.2s;
+}
+.footer .footer-container .footer-info:not(:last-child):hover {
+  color: #166AEA;
+}
+.footer .footer-container .footer-info:last-child {
+  margin-left: auto;
+}/*# sourceMappingURL=main.css.map */
