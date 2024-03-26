@@ -3,6 +3,7 @@ const renderRegister = (req, res) => {
 }
 
 const handleRegister = (req, res) => {
+    
 }
 
 const renderLogin = (_req, res) => {
