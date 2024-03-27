@@ -4,6 +4,7 @@ const { server } = require('config');
 const connectDB = require('./config/db');
 const cookieParser = require('cookie-parser');
 const morgan = require('morgan');
+const { errorHandler, notFoundHandler} = require('./middleware/errorHandlers');
 
 const authRouter = require('./routes/auth');
 const pagesRouter = require('./routes/pages');
@@ -27,5 +28,9 @@ app.set('view engine', 'ejs');
 // Routes
 app.use('/auth', authRouter);
 app.use('/', pagesRouter);
+
+
+app.all('*', notFoundHandler);
+app.use(errorHandler);
 
 app.listen(port, console.log(`Server is running on port ${port}`));

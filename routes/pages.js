@@ -13,4 +13,8 @@ router.get('/admin', (req, res) => {
     res.render('admin');
 });
 
+router.get('/error', (req, res )=> {
+    res.render('error');
+});
+
 module.exports = router;

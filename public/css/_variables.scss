@@ -1,5 +1,6 @@
 // ----------------- Fonts ----------------
 
+$fz-xl: clamp(42px, calc(54 / 1200 * 100vw), 54px); 
 $fz-l: clamp(26px, calc(35 / 1200 * 100vw), 35px); 
 $fz-m: clamp(28px, calc(30 / 1200 * 100vw), 30px);
 $fz-xm: clamp(22px, calc(25 / 1200 * 100vw), 25px);

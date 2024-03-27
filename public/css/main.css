@@ -164,6 +164,18 @@ ul {
   margin-top: 4px;
 }
 
+.error-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+}
+.error-container .error-status {
+  font-size: clamp(42px, 4.5vw, 54px);
+  line-height: 150%;
+}
+
 .header {
   position: fixed;
   top: 0;
