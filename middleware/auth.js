@@ -2,6 +2,7 @@ const ERROR = require('../constants/errors');
 const STATUS  = require('../constants/statusCodes');
 const { issueAccessJwt, issueRefreshJwt } = require('../utils/auth');
 const userServices = require('../services/users');
+const adminServices = require('../services/admins');
 
 const tokenSession = (req, res, next) =>{
     const { role, userId } = req._auth || {};
@@ -14,7 +15,7 @@ const tokenSession = (req, res, next) =>{
     const refreshToken = issueRefreshJwt({ userId });
 
     if(role === 'admin') {
-        userServices.findAdminAndUpdate({ _id: userId }, { refreshToken });
+        adminServices.findAdminAndUpdate({ _id: userId }, { refreshToken });
     } else if(role === 'user') {
         userServices.findUserAndUpdate({ _id: userId }, { refreshToken });
     } else {
@@ -24,6 +25,8 @@ const tokenSession = (req, res, next) =>{
     res.cookie('accessToken', accessToken, { httpOnly: true, secure: true, sameSite: 'strict' });
     res.cookie('refreshToken', refreshToken, { httpOnly: true, secure: true, sameSite: 'strict' });
     
+    console.log(role);
+
     const redirectTo = role === 'admin' ? '/admin' : '/';
     return res.redirect(redirectTo);
 }

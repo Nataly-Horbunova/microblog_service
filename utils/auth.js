@@ -10,6 +10,14 @@ const encryptPassword = async (plainTextPass) => {
     return hashedPass;
 }
 
+const checkPassword = async (plainTextPass, encryptedPass) => {
+    try {
+        return !!(await bcrypt.compare(plainTextPass, encryptedPass));
+    } catch (err) {
+        return false;
+    }
+}
+
 const secret = auth.jwtSecret;
 
 const issueAccessJwt = (data) => {
@@ -22,6 +30,7 @@ const issueRefreshJwt = (data) => {
 
 module.exports = {
     encryptPassword,
+    checkPassword,
     issueAccessJwt,
     issueRefreshJwt
 }

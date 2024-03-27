@@ -17,8 +17,14 @@ const registerErrorHandler = (err, _req, res, next) => {
     return res.status(err.status).render('register', { tittle: "Registration", err: err.message });
 }
 
+const loginErrorHandler = (err, _req, res, next) => {
+    if(err instanceof Error) return next(err);
+    return res.status(err.status || STATUS.BadRequest).render('login', { tittle: "Login", err: err.message });
+}
+
 module.exports = {
     errorHandler,
     registerErrorHandler,
-    notFoundHandler
+    notFoundHandler,
+    loginErrorHandler
 };

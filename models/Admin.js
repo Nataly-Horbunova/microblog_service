@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const adminSchema = new Schema({
-    username: {
+    name: {
         type: String,
         required: true
     },
@@ -13,4 +13,4 @@ const adminSchema = new Schema({
     refreshToken: String
 });
 
-module.exports = mongoose.model('Admin', userSchema);
+module.exports = mongoose.model('Admin', adminSchema);

@@ -1,7 +1,7 @@
 const User = require('../models/User');
 
-const findUser = async (option) => {
-    return await User.findOne(option).exec();
+const findUser = async (filter) => {
+    return await User.findOne(filter).exec();
 }
 
 const createUser = async (newUser) => {

@@ -1,15 +1,16 @@
 
 const ERROR = require('../constants/errors');
 const STATUS  = require('../constants/statusCodes');
-const { encryptPassword } = require('../utils/auth');
+const { encryptPassword, checkPassword } = require('../utils/auth');
 const userServices = require('../services/users');
+const adminServices = require('../services/admins');
 
 
 const renderRegister = (_req, res, next) => {
     res.render('register', { tittle: "Registration" });
 }
 
-const handleRegister = async (req, res, next) => {
+const handleRegister = async (req, _res, next) => {
     const { username, password, confirmPassword } = req.body;
     
     if( password !== confirmPassword) { 
@@ -37,10 +38,44 @@ const handleRegister = async (req, res, next) => {
 }
 
 const renderLogin = (req, res) => {
-        res.render('login');
+        res.render('login', { tittle: "Login" });
     }
 
-const handleLogin = (req, res) => {
+const handleLogin = async(req, _res, next) => {
+    const { login, password } = req.body;
+    
+    try {
+        const admin = await adminServices.findAdmin({ name: login });
+
+        if (admin) {
+            isPassValid = await checkPassword(password, admin.password);
+
+            if (!isPassValid) {
+                return next({ message: ERROR.loginError });
+            }
+
+            req._auth = { role: 'admin', userId: admin._id };
+            next();
+        }
+
+        const user = await userServices.findUser({ username: login });
+
+        if (!user) {
+            return next({ status: STATUS.Unauthorized , message: ERROR.loginError });
+        }
+
+        isPassValid = await checkPassword(password, user.password);
+
+        if (!isPassValid) {
+            return next({ message: ERROR.loginError });
+        }
+
+        req._auth = { role: 'author', userId: user._id };
+        next();
+
+    } catch (err) { 
+        next(err);
+    }
 }
 
     module.exports = {
