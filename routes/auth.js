@@ -5,9 +5,11 @@ const { registerErrorHandler, loginErrorHandler } = require('../middleware/error
 const { tokenSession } = require('../middleware/auth');
 
 router.get('/register', authController.renderRegister );
-router.post('/register', authController.handleRegister, registerErrorHandler, tokenSession);
+router.post('/register', authController.handleRegister, tokenSession, registerErrorHandler );
 
 router.get('/login', authController.renderLogin);
-router.post('/login', authController.handleLogin, loginErrorHandler, tokenSession);
+router.post('/login', authController.handleLogin, tokenSession, loginErrorHandler);
+
+router.get('/logout', authController.handleLogout); 
 
 module.exports = router;

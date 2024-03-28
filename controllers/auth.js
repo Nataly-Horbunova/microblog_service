@@ -70,11 +70,41 @@ const handleLogin = async(req, _res, next) => {
             return next({ message: ERROR.loginError });
         }
 
-        req._auth = { role: 'author', userId: user._id };
+        req._auth = { role: 'user', userId: user._id };
         next();
 
-    } catch (err) { 
-        next(err);
+    } catch (error) { 
+        next(error);
+    }
+}
+
+const handleLogout = async (req, res, next) => {
+    const { accessToken, refreshToken } = req.cookies;
+
+    if (accessToken) {
+        res.clearCookie('accessToken', accessToken, { httpOnly: true, secure: true, sameSite: 'strict' });
+    }
+
+    if (refreshToken) {
+        res.clearCookie('refreshToken', refreshToken, { httpOnly: true, secure: true, sameSite: 'strict' });
+    }
+
+    try {
+        const user = await userServices.findUser({ refreshToken });
+        const admin = await adminServices.findAdmin({ refreshToken });
+    
+        if (user) {
+            userServices.updateUser(user, 'refreshToken', '');
+        }
+    
+        if (admin) {
+            adminServices.updateAdmin(admin, 'refreshToken', '');
+        } 
+
+        return res.status(STATUS.NoContent).redirect('/');
+
+    } catch (error) {
+        next(error)
     }
 }
 
@@ -83,4 +113,5 @@ const handleLogin = async(req, _res, next) => {
         handleRegister,
         renderLogin,
         handleLogin,
+        handleLogout
     }

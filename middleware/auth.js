@@ -8,7 +8,7 @@ const tokenSession = (req, res, next) =>{
     const { role, userId } = req._auth || {};
 
     if( !role || !userId ) {
-        next( {status: STATUS.Unauthorized, message: ERROR.authorizarionError} );
+        next( {status: STATUS.Unauthorized, message: 'no role/id'} ); //ERROR.authorizarionError
     }
 
     const accessToken = issueAccessJwt({ role, userId });
@@ -19,7 +19,7 @@ const tokenSession = (req, res, next) =>{
     } else if(role === 'user') {
         userServices.findUserAndUpdate({ _id: userId }, { refreshToken });
     } else {
-        next( {status: STATUS.Unauthorized, message: ERROR.authorizarionError} );
+        next( {status: STATUS.Unauthorized, message: 'not admin/user'} ); ERROR.authorizarionError
     }
 
     res.cookie('accessToken', accessToken, { httpOnly: true, secure: true, sameSite: 'strict' });

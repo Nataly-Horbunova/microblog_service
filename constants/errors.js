@@ -4,7 +4,8 @@ const ERROR = {
     serverError: 'Server error, try again later.',
     notFoundError: 'Page not found.',
     authorizarionError: 'Authorizarion error.',
-    loginError: 'Invalid credentials.'
+    loginError: 'Invalid credentials.',
+    noContentError: 'No content'
   }
   
   module.exports = ERROR;

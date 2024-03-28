@@ -4,6 +4,11 @@ const findUser = async (filter) => {
     return await User.findOne(filter).exec();
 }
 
+const updateUser = async (user, updateKey, updateValue) => {
+    user[updateKey] = updateValue;
+    await user.save();
+}
+
 const createUser = async (newUser) => {
     return await User.create(newUser); 
 }
@@ -14,6 +19,7 @@ const findUserAndUpdate = async (filter, update) => {
 
 module.exports = {
     findUser,
+    updateUser,
     createUser,
     findUserAndUpdate
 }
