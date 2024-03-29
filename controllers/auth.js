@@ -7,7 +7,7 @@ const adminServices = require('../services/admins');
 
 
 const renderRegister = (_req, res, next) => {
-    res.render('register', { tittle: "Registration" });
+    return res.render('register');
 }
 
 const handleRegister = async (req, _res, next) => {
@@ -38,8 +38,8 @@ const handleRegister = async (req, _res, next) => {
 }
 
 const renderLogin = (req, res) => {
-        res.render('login', { tittle: "Login" });
-    }
+    return res.render('login');
+}
 
 const handleLogin = async(req, _res, next) => {
     const { login, password } = req.body;

@@ -1,20 +1,14 @@
 const express = require('express');
 const router = express.Router();
+const pagesController = require('../controllers/pages');
+const { protectedRoute } = require('../middleware/auth');
 
-router.get('/', (req, res)=> {
-    res.render('index');
-});
+router.get('/', protectedRoute(['user', 'unsigned'], './admin'), pagesController.renderRoot);
 
-router.get('/user-posts', (req, res)=> {
-    res.render('user_posts');
-});
+router.get('/user-posts', protectedRoute(['user']), pagesController.renderUserPosts);
 
-router.get('/admin', (req, res) => {
-    res.render('admin');
-});
+router.get('/admin', protectedRoute(['admin']), pagesController.renderAdmin);
 
-router.get('/error', (req, res )=> {
-    res.render('error');
-});
+router.get('/error', pagesController.renderError);
 
 module.exports = router;

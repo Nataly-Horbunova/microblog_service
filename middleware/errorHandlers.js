@@ -3,8 +3,8 @@ const ERROR = require('../constants/errors');
 
 const errorHandler = (err, _req, res, _next) => {
     return res.status(err.status || STATUS.ServerError).render('error', { 
-        statusCode: err.status || STATUS.ServerError, 
-        errMessage: err.message || ERROR.serverError
+        statusCode: err.status || STATUS.ServerError || '', 
+        errMessage: err.message || ERROR.serverError || ''
     });
 }
 

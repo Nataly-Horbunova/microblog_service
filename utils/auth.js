@@ -21,16 +21,46 @@ const checkPassword = async (plainTextPass, encryptedPass) => {
 const secret = auth.jwtSecret;
 
 const issueAccessJwt = (data) => {
-    return jwt.sign( data, secret, {expiresIn: '15min'});
+    return jwt.sign( data, secret, {expiresIn: '15s'});
 }
 
 const issueRefreshJwt = (data) => {
     return jwt.sign( data, secret, {expiresIn: '1d'});
 }
 
+const isTokenExpired = (token) => {
+    const decodedToken = jwt.decode(token);
+    
+    if (!decodedToken || !decodedToken.exp) {
+        return true; 
+    }
+
+    const currentTime = Date.now() / 1000; 
+    return decodedToken.exp < currentTime;
+}
+
+const veryfyJwt = (token) => { 
+    let data = {};
+
+    if (!token) {
+        console.log('Missing JWT, unauth client');
+        return data;
+    }
+
+    try {
+        data = jwt.verify(token, secret);
+    } catch (err) {
+        console.log('Invalid JWT!');
+    }
+
+    return data;
+}
+
 module.exports = {
     encryptPassword,
     checkPassword,
     issueAccessJwt,
-    issueRefreshJwt
+    issueRefreshJwt,
+    isTokenExpired,
+    veryfyJwt
 }
