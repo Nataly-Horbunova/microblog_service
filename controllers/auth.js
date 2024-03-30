@@ -5,7 +5,6 @@ const { encryptPassword, checkPassword } = require('../utils/auth');
 const userServices = require('../services/users');
 const adminServices = require('../services/admins');
 
-
 const renderRegister = (_req, res, next) => {
     return res.render('register');
 }
@@ -18,11 +17,6 @@ const handleRegister = async (req, _res, next) => {
     }
 
     try {
-        const duplicate = await userServices.findUser({ name: login });
-        if (duplicate) {
-            return next( {status: STATUS.Conflict, message: ERROR.userNameError } ); 
-        }
-
         const ecryptedPassword = await encryptPassword(password);
         const newUser = await userServices.createUser({
             name: login,
