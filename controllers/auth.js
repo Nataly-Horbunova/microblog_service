@@ -11,21 +11,21 @@ const renderRegister = (_req, res, next) => {
 }
 
 const handleRegister = async (req, _res, next) => {
-    const { username, password, confirmPassword } = req.body;
+    const { login, password, confirmPassword } = req.body;
     
     if( password !== confirmPassword) { 
         return next( {status: STATUS.BadRequest, message: ERROR.passwordError });  //! handle on client?
     }
 
     try {
-        const duplicate = await userServices.findUser({ username });
+        const duplicate = await userServices.findUser({ name: login });
         if (duplicate) {
             return next( {status: STATUS.Conflict, message: ERROR.userNameError } ); 
         }
 
         const ecryptedPassword = await encryptPassword(password);
         const newUser = await userServices.createUser({
-            username,
+            name: login,
             password: ecryptedPassword
         });
 
@@ -58,7 +58,7 @@ const handleLogin = async(req, _res, next) => {
             next();
         }
 
-        const user = await userServices.findUser({ username: login });
+        const user = await userServices.findUser({ name: login });
 
         if (!user) {
             return next({ status: STATUS.Unauthorized , message: ERROR.loginError });

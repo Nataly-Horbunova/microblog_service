@@ -58,12 +58,12 @@ const jwtParser = async (req, res, next) => {
 
         const foundUser = user || admin;
         const role = user ? 'user' : 'admin';
-        // const decoded = veryfyJwt(refreshToken); //! reafactor name/username
+        const decoded = veryfyJwt(refreshToken); 
 
-        // if(decoded.name !== foundUser.name)  {
-        //     req._auth = {};
-        //     return next();
-        // }
+        if(decoded.name !== foundUser.name)  {
+            req._auth = {};
+            return next();
+        }
 
         const payload = { role, userId: foundUser._id };
         const newAccessToken = issueAccessJwt(payload);
