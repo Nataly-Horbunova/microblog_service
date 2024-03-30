@@ -35,16 +35,17 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <form method="post" class="post-form">
+                                <form action="/api/posts" method="post" class="post-form">
                                     <div class="mb-3">
-                                        <label for="post-tittle" class="post-form-label">Tittle</label>
-                                        <input type="text" class="form-control post-form-control" name="tittle"
-                                            id="post-tittle" required>
+                                        <label for="post-title" class="post-form-label">Title</label>
+                                        <input type="text" class="form-control post-form-control" name="title"
+                                            id="post-title" required>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="post-text" class="post-form-label">Text</label>
-                                        <textarea class="form-control post-form-control" name="text" id="post-text"
-                                            required></textarea>
+                                        <label for="post-content" class="post-form-label">Text</label>
+                                        <textarea class="form-control post-form-control" name="content" id="post-content"
+                                            required>
+                                        </textarea>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="button button-secondary"
