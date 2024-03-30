@@ -1,0 +1,73 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
+    @include flex(flex-start, stretch, 0, column);
+    margin: 0;
+    font-family: 'Rubik', sans-serif;
+    background-color: $bg-color;
+    color: $text-color-primary;
+    font-size: $fz-xs;
+    line-height: $lh-s;
+    scroll-behavior: smooth;
+    min-height: 100vh;
+  }
+  
+  .container {
+
+    margin: 0 auto;
+    max-width: 1400px;
+    padding: 0 clamp(16px, calc(40 / 1400 * 100vw), 40px);
+  }  
+
+  p, h1, h2, h3, h4 {
+    margin: 0;
+  }
+  
+  a {
+    text-decoration: none ;
+  }
+  
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .button{
+    padding: 12px 30px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: .2s;
+    border-width: 1px;
+    border-style: solid;
+    text-decoration: none;
+  }
+
+  .button-primary{
+    background-color: $primary-color;
+    border-color: $primary-color;
+    color: $text-color-secondary;
+
+    &:hover{
+      background-color: darken($primary-color, 10%);
+    }
+  }
+
+  .button-secondary{
+    background-color: $text-color-secondary;
+    color: $text-color-primary;
+    border-color: $text-color-primary;
+
+    &:hover{
+      border-color: $primary-color;
+    }
+  }  
+
+  #error{
+    font-size: $fz-xxs;
+    color: $error-color;
+    margin-top: 4px;
+  }

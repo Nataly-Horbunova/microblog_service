@@ -1,0 +1,23 @@
+.footer{
+    margin-top: auto;
+    height: 84px;
+    padding: 30px 0;
+    box-shadow: 0px -1px 0px rgba(0,0,0,.1);
+
+    .footer-container{
+        @include flex(flex-start, center, 30px);
+
+        .footer-info:not(:last-child){
+            cursor: pointer;
+            transition: .2s;
+
+            &:hover{
+                color: $primary-color;
+            }
+        }
+
+        .footer-info:last-child{
+            margin-left: auto;
+        }
+    }
+}

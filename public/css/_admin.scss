@@ -1,0 +1,39 @@
+
+.admin-container{
+
+    .users-list-tittle{
+    font-family: 'Rubik', sans-serif;
+    font-size: $fz-m;
+    line-height: $lh-m;
+    font-weight: 400; 
+    }
+
+    .users-list{
+        margin-top: 30px;
+
+        &-item{
+            margin-top: 10px;
+            @include flex(flex-start, stretch, 10px);
+
+            .user-name{
+                flex-basis: 200px;
+                padding: 20px;
+                background-color: transparentize($primary-color, 0.9);
+            }
+
+            & i{
+                @include flex(center, center);
+                flex-basis: 80px;
+                padding: 20px;
+                background-color: transparentize($primary-color, 0.9);
+                color: $primary-color;
+                cursor: pointer;
+                transition: .2s;
+
+                &:hover{
+                    color: transparentize($text-color-primary, 0.3);
+                }
+            }
+        }
+    }
+}

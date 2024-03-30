@@ -1,0 +1,9 @@
+.error-container{
+    @include flex(center, center, 20px, column);
+
+    .error-status{
+        font-size: $fz-xl;
+        line-height: $lh-l;
+    }
+
+}

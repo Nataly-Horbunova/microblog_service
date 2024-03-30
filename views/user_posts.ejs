@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My posts</title>
+    <link rel="icon" href="/img/favicon.svg" type="image/x-icon">
+    <!------------- Bootstrap --------------->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- --------- Font Awesone ------------------ -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- ------ Custom styles ------------ -->
+    <link rel="stylesheet" href="/css/main.css">
+
+</head>
+
+<body>
+    <%- include('./partials/header') %>
+        <main>
+            <!-- ============ POSTS ================ -->
+            <div class="posts-section container">
+                <button type="button" class="button button-primary" data-bs-toggle="modal" data-bs-target="#addPost">
+                    + Add new post
+                </button>
+                <div class="modal fade" id="addPost" tabindex="-1" aria-labelledby="addPostLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="add-post-modal-tittle" id="addPostLabel">New post</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form method="post" class="post-form">
+                                    <div class="mb-3">
+                                        <label for="post-tittle" class="post-form-label">Tittle</label>
+                                        <input type="text" class="form-control post-form-control" name="tittle"
+                                            id="post-tittle" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="post-text" class="post-form-label">Text</label>
+                                        <textarea class="form-control post-form-control" name="text" id="post-text"
+                                            required></textarea>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="button button-secondary"
+                                            data-bs-dismiss="modal">Close</button>
+                                        <button type="submit" class="button button-primary">Add Post</button>
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <ul class="posts-list">
+                    <li class="posts-list-item">
+                        <div class="tittle-wrapper">
+                            <h3 class="post-tittle">This is post number one</h3>
+                            <i class="fa-regular fa-trash-can"></i>
+                        </div>
+                        <div class="post-info">
+                            <span class="post-user-name">Alice Jonson</span>
+                            <span class="post-info-divider"></span>
+                            <span class="post-date">Nov 29, 2023</span>
+                        </div>
+                        <div class="post-text-wrapper">
+                            <p class="post-text collapse" id="collapsePost">
+                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores placeat voluptas error
+                                sunt cum. Neque, tenetur. In nisi labore tempore voluptatem ratione tempora nesciunt
+                                neque
+                                beatae ab repellat et vel voluptatum, saepe vero, sint alias cum eaque odit consequatur
+                                temporibus reiciendis consequuntur. Dolor molestiae a recusandae, laudantium omnis
+                                consequatur voluptates quam optio corporis pariatur asperiores dicta deleniti impedit
+                                quaerat maiores reiciendis doloremque iure officia. Totam necessitatibus nisi
+                                consequuntur
+                                natus praesentium iure magni dolor. Nulla dignissimos alias nam saepe enim
+                                necessitatibus
+                                recusandae voluptate error? Impedit non quos dolor corrupti ducimus aliquam sequi
+                                deserunt
+                                commodi id fugit consequatur quam provident totam, excepturi cupiditate corporis
+                                distinctio
+                                alias ad a blanditiis vitae amet! Qui sed, a ullam praesentium distinctio impedit
+                                commodi
+                                ipsa temporibus tenetur perspiciatis. Consequatur ullam veritatis reiciendis eligendi
+                                ducimus, tenetur architecto et eos corrupti neque quibusdam esse assumenda non quam
+                                blanditiis odio ipsa iure totam hic? Laborum hic doloribus eveniet ullam harum
+                                distinctio
+                                temporibus sed. Fugit consequuntur incidunt debitis natus perspiciatis voluptatum
+                                numquam,
+                                eos sit excepturi cupiditate iusto totam molestiae minus hic labore asperiores ex
+                                dignissimos ab quos, laborum accusamus, quia eum nemo eveniet! Ipsam eum a tempora
+                                numquam
+                                commodi, molestias officia nesciunt corrupti id, aliquam dolorem nobis repudiandae
+                                veniam
+                                voluptate.
+                                ducimus, tenetur architecto et eos corrupti neque quibusdam esse assumenda non quam
+                                blanditiis odio ipsa iure totam hic? Laborum hic doloribus eveniet ullam harum
+                                distinctio
+                                temporibus sed. Fugit consequuntur incidunt debitis natus perspiciatis voluptatum
+                                numquam,
+                                eos sit excepturi cupiditate iusto totam molestiae minus hic labore asperiores ex
+                                dignissimos ab quos, laborum accusamus, quia eum nemo eveniet! Ipsam eum a tempora
+                                numquam
+                                commodi, molestias officia nesciunt corrupti id, aliquam dolorem nobis repudiandae
+                                veniam
+                                voluptate molestias.
+                                Вucimus, tenetur architecto et eos corrupti neque quibusdam esse assumenda non quam
+                                blanditiis odio ipsa iure totam hic? Laborum hic doloribus eveniet ullam harum
+                                distinctio
+                                temporibus sed. Fugit consequuntur incidunt debitis natus perspiciatis voluptatum
+                                numquam,
+                                eos sit excepturi cupiditate iusto totam molestiae minus hic labore asperiores ex
+                                dignissimos ab quos, laborum accusamus, quia eum nemo eveniet! Ipsam eum a tempora
+                                numquam
+                                commodi, molestias officia nesciunt corrupti id, aliquam dolorem nobis repudiandae
+                                veniam
+                                voluptate laborum.
+                            </p>
+                            <a class="collapsed post-text-collapse" data-bs-toggle="collapse" href="#collapsePost"
+                                aria-expanded="false" aria-controls="collapsePost">
+                            </a>
+                        </div>
+                        <h4 class="comments-tittle" data-bs-toggle="collapse" href="#collapseComments"
+                            aria-expanded="false" aria-controls="collapseComments">
+                            Comments (3): <i class="fa-solid fa-chevron-down"></i>
+                        </h4>
+                        <div class="comments-wrapper collapse multi-collapse" id="collapseComments">
+                            <ul class="comments-list ">
+                                <li class="comments-list-item">
+                                    <div class="comment-info">
+                                        <span class="comment-user-name">Alice Jonson</span>
+                                        <span class="comment-info-divider"></span>
+                                        <span class="comment-date">Nov 29, 2023</span>
+                                    </div>
+                                    <p class="comment-text">
+                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem porro
+                                        quas
+                                        quos
+                                        vero tempora temporibus eos, ipsam animi quo nisi? Lorem ipsum dolor sit amet
+                                        consectetur adipisicing elit. Exercitationem porro quas quos
+                                        vero tempora temporibus eos, ipsam animi quo nisi?
+                                    </p>
+                                </li>
+                                <li class="comments-list-item">
+                                    <div class="comment-info">
+                                        <span class="comment-user-name">Alice Jonson</span>
+                                        <span class="comment-info-divider"></span>
+                                        <span class="comment-date">Nov 29, 2023</span>
+                                    </div>
+                                    <p class="comment-text">
+                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem porro
+                                        quas
+                                        quos
+                                        vero tempora temporibus eos, ipsam animi quo nisi? Lorem ipsum dolor sit amet
+                                        consectetur adipisicing elit. Exercitationem porro quas quos
+                                        vero tempora temporibus eos, ipsam animi quo nisi?
+                                    </p>
+                                </li>
+                                <li class="comments-list-item">
+                                    <div class="comment-info">
+                                        <span class="comment-user-name">Alice Jonson</span>
+                                        <span class="comment-info-divider"></span>
+                                        <span class="comment-date">Nov 29, 2023</span>
+                                    </div>
+                                    <p class="comment-text">
+                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem porro
+                                        quas
+                                        quos
+                                        vero tempora temporibus eos, ipsam animi quo nisi? Lorem ipsum dolor sit amet
+                                        consectetur adipisicing elit. Exercitationem porro quas quos
+                                        vero tempora temporibus eos, ipsam animi quo nisi?
+                                    </p>
+                                </li>
+                            </ul>
+                            <form method="post" class="comment-form">
+                                <div class="mb-3">
+                                    <label for="comment" class="comment-form-label">Add comment</label>
+                                    <textarea class="form-control comment-form-control" name="comment" id="comment"
+                                        required></textarea>
+                                    <div id="error"></div>
+                                </div>
+                                <button type="submit" class="button button-primary">Submit</button>
+                            </form>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </main>
+        <%- include('./partials/footer') %>
+
+            <!-- --------- Bootstrap ------------- -->
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+                crossorigin="anonymous">
+                </script>
+</body>
+
+</html>

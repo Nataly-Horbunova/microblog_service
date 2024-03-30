@@ -1,0 +1,39 @@
+.login-container {
+    @include flex (center, center);
+
+    .login-wrapper{
+
+        .login-form{
+            flex-basis: 300px;
+
+            &-label{
+                margin-bottom: 10px;
+            }
+
+            &-control{
+                @extend %form-control;
+
+                &:focus{
+                    @extend %form-control-focus;
+                }
+            }
+
+            .login-button{
+                width: 100%;
+            }
+        }
+
+        .register-wrapper{
+            margin-top: 20px;
+
+            .register-link{
+                color: $primary-color;
+                transition: .2s;
+
+                &:hover{
+                    color: lighten($primary-color, 10%)
+                }
+            }
+        }
+    }
+}

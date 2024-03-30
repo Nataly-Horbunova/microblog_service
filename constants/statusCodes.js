@@ -9,6 +9,4 @@ const STATUS = {
     ServerError: 500
   }
   
-  module.exports = {
-    STATUS
-  };
+  module.exports = STATUS;

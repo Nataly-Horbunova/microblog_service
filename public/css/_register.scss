@@ -1,0 +1,41 @@
+.register-container {
+    @include flex (center, center);
+
+    .register-wrapper{
+        .register-form{
+            flex-basis: 300px;
+
+            &-label{
+                margin-bottom: 10px;
+            }
+
+            &-control{
+                @extend %form-control;
+
+                &:focus{
+                    @extend %form-control-focus;
+                }
+            }
+
+            .register-button{
+                width: 100%;
+            }
+        }
+
+        .login-wrapper{
+            margin-top: 20px;
+
+            .login-link{
+                color: $primary-color;
+                transition: .2s;
+
+                &:hover{
+                    color: lighten($primary-color, 10%)
+                }
+            }
+        }
+
+
+    }
+
+}

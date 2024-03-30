@@ -1,0 +1,45 @@
+.header{
+    position: fixed; 
+    top: 0;
+    height: 102px;
+    width: 100%;
+    padding: 30px 0;
+    z-index: 100;
+    background-color: $bg-color;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    
+    &-container{
+        @include flex(space-between, center, 20px); 
+
+        .header-nav{ 
+            .nav-list{
+            @include flex(space-between, center, 20px);
+                &-item-link{
+                    color: inherit;
+                    transition: .2s;
+
+                    &:hover{
+                        color: $primary-color;
+                    }
+                }
+            }
+        }
+
+        .header-logo-link { 
+            display: block;
+            max-width: 160px;
+
+            .logo-img{
+                display: block;
+                width: 100%;
+            }
+        }
+
+        .header-auth{
+            &-list{
+                @include flex(space-between, center, 20px);
+            }
+        }
+    }
+}
+
