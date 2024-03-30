@@ -5,7 +5,7 @@ const { protectedRoute } = require('../middleware/auth');
 
 router.get('/', protectedRoute(['user', 'unsigned'], './admin'), pagesController.renderRoot);
 
-router.get('/user-posts', protectedRoute(['user']), pagesController.renderUserPosts);
+router.get('/user-posts/:userId', protectedRoute(['user']), pagesController.renderUserPosts);
 
 router.get('/admin', protectedRoute(['admin']), pagesController.renderAdmin);
 

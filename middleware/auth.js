@@ -65,7 +65,7 @@ const jwtParser = async (req, res, next) => {
             return next();
         }
 
-        const payload = { role, userId: foundUser._id };
+        const payload = { role, userId: decoded.userId };
         const newAccessToken = issueAccessJwt(payload);
         res.cookie('accessToken', newAccessToken, { httpOnly: true, secure: true, sameSite: 'strict' });
 
