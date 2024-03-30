@@ -60,7 +60,7 @@ const jwtParser = async (req, res, next) => {
         const role = user ? 'user' : 'admin';
         const decoded = veryfyJwt(refreshToken); 
 
-        if(decoded.name !== foundUser.name)  {
+        if(decoded.userId !== foundUser._id.toString())  {
             req._auth = {};
             return next();
         }
