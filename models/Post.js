@@ -12,13 +12,24 @@ const postSchema = new Schema({
     },
     date: {
         type: Date,
-        default: Date.now()
+        default: Date.now
     },
     author: { 
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
+        ref: 'User', 
         required: true
     }
+}, 
+{
+    toJSON: { virtuals: true }, 
+    toObject: { virtuals: true } 
+});
+
+
+postSchema.virtual('comments', {
+    ref: 'Comment',
+    localField: '_id',
+    foreignField: 'post'
 });
 
 module.exports = mongoose.model('Post', postSchema);

@@ -274,14 +274,6 @@ main .posts-section .posts-list-item .tittle-wrapper {
   align-items: center;
   gap: 30px;
 }
-main .posts-section .posts-list-item .tittle-wrapper i {
-  color: #166AEA;
-  cursor: pointer;
-  transition: 0.2s;
-}
-main .posts-section .posts-list-item .tittle-wrapper i:hover {
-  color: rgba(25, 28, 30, 0.7);
-}
 main .posts-section .posts-list-item .post-tittle {
   font-family: "Rubik", sans-serif;
   font-size: clamp(28px, 2.5vw, 30px);
@@ -327,6 +319,9 @@ main .posts-section .posts-list-item .comments-list {
 main .posts-section .posts-list-item .comments-list .comments-list-item {
   margin-top: 20px;
 }
+main .posts-section .posts-list-item .comments-list .comments-list-item .comment-info i {
+  margin-left: 30px;
+}
 main .posts-section .posts-list-item .comments-list .comments-list-item .comment-text {
   margin-top: 4px;
   font-family: "Segoe UI", sans-serif;
@@ -339,6 +334,15 @@ main .posts-section .posts-list-item .comment-form-label {
   margin-bottom: 10px;
   font-weight: 500;
 }
+main .posts-section .posts-list-item .trash-can {
+  color: #166AEA;
+  cursor: pointer;
+  transition: 0.2s;
+}
+main .posts-section .posts-list-item .trash-can:hover {
+  color: rgba(25, 28, 30, 0.7);
+}
+
 .admin-container .users-list-tittle {
   font-family: "Rubik", sans-serif;
   font-size: clamp(28px, 2.5vw, 30px);

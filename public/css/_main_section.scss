@@ -61,19 +61,9 @@ main{
         .posts-list{
             &-item{
                 margin-top: 40px;
-
+                
                 .tittle-wrapper{
                     @include flex(flex-start, center, 30px);
-
-                    & i{
-                        color: $primary-color;
-                        cursor: pointer;
-                        transition: .2s;
-
-                        &:hover{
-                            color: transparentize($text-color-primary, 0.3);
-                        }
-                    }
                 }
 
                 .post-tittle{
@@ -144,6 +134,10 @@ main{
                             .comment-info-divider{
                                 @extend %divider;
                             }
+
+                            & i {
+                                margin-left: 30px;
+                            }
                         }
 
                         .comment-text{
@@ -168,6 +162,16 @@ main{
                         &:focus{
                             @extend %form-control-focus;
                         }
+                    }
+                }
+
+                .trash-can {
+                    color: $primary-color;
+                    cursor: pointer;
+                    transition: .2s;
+
+                    &:hover{
+                        color: transparentize($text-color-primary, 0.3);
                     }
                 }
             }

@@ -1,14 +1,14 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const commentSchema = {
+const commentSchema = new Schema({
     content: {
         type: String,
         required: true,
     },
     author: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
+        ref: 'User', 
         required: true
     },
     post: {
@@ -18,8 +18,9 @@ const commentSchema = {
     },
     date: {
         type: Date,
-        default: Date.now()
+        default: Date.now
     },
-}
+});
+
 
 module.exports = mongoose.model('Comment', commentSchema);
