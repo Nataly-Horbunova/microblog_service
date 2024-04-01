@@ -5,7 +5,9 @@ const ERROR = {
     notFoundError: 'Page not found',
     authorizarionError: 'Authorizarion error',
     loginError: 'Invalid credentials',
-    noContentError: 'No content'
+    postError: 'An error occured. Your post has not been published.',
+    noContentError: 'No content',
+    forbiddenError: 'Forbidden'
   }
   
   module.exports = ERROR;

@@ -7,25 +7,34 @@ const addNewPost = async (req, res, next) => {
 
     if(!userId) {
         console.log('The user is posssibly not logged in');
-        return res.status(STATUS.Forbidden).redirect('/'); //? status?
+        return next( {status: STATUS.Forbidden, message: ERROR.forbiddenError} );
     }
 
-    const { title, content } = req.body;
-    const newPost = {
+    const { title, content } = req.body;  //! valideate body
+    const post = {
         title, 
         content,
         author: userId
     }
 
     try {
-        await postsServices.addNewPost(newPost);
-        res.status(STATUS.Created).redirect('/');
+        const newPost = await postsServices.addNewPost(post);
+
+        if (!newPost){
+            return next ({ status: STATUS.BadRequest, message: ERROR.postError });
+        }
+
+        return res.status(STATUS.Created).redirect(req.get('referer'));
     } catch (error) {
         next(error);
     }
 }
 
-const deletePost = (req, res, next ) => {
+const deletePost = async (req, res, next ) => {
+    const { postId } = req.params || {}; //! valideate postId
+
+    const deletedPost = await postsServices.deletePost(postId);
+    
 
 }
 

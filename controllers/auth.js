@@ -10,10 +10,10 @@ const renderRegister = (_req, res, next) => {
 }
 
 const handleRegister = async (req, _res, next) => {
-    const { login, password, confirmPassword } = req.body;
+    const { login, password, confirmPassword } = req.body; //! validate body
     
     if( password !== confirmPassword) { 
-        return next( {status: STATUS.BadRequest, message: ERROR.passwordError });  //! handle on client?
+        return next( {status: STATUS.BadRequest, message: ERROR.passwordError });
     }
 
     try {
@@ -36,7 +36,7 @@ const renderLogin = (req, res) => {
 }
 
 const handleLogin = async(req, _res, next) => {
-    const { login, password } = req.body;
+    const { login, password } = req.body; //! validate body
     
     try {
         const admin = await adminServices.findAdmin({ name: login });
@@ -88,14 +88,14 @@ const handleLogout = async (req, res, next) => {
         const admin = await adminServices.findAdmin({ refreshToken });
     
         if (user) {
-            userServices.updateUser(user, 'refreshToken', '');
+            await userServices.updateUser(user, 'refreshToken', '');
         }
     
         if (admin) {
-            adminServices.updateAdmin(admin, 'refreshToken', '');
+            await adminServices.updateAdmin(admin, 'refreshToken', '');
         } 
 
-        return res.status(STATUS.NoContent).redirect('/');
+        return res.redirect('/');
 
     } catch (error) {
         next(error)

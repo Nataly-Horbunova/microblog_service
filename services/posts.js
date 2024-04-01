@@ -16,7 +16,6 @@ const getAllPosts = async(filter) => {
         }
     })
     .sort({date: -1});
-    
     return posts;
 }
 
@@ -24,7 +23,7 @@ const addNewPost = async (newPost) => {
     return await Post.create(newPost);
 }
 
-const deletePost = () => {}
+const deletePost = async () => {}
 
 module.exports = {
     getAllPosts,
