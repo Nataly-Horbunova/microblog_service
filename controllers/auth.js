@@ -10,13 +10,14 @@ const renderRegister = (_req, res, next) => {
 }
 
 const handleRegister = async (req, _res, next) => {
-    const { login, password, confirmPassword } = req.body; //! validate body
-    
-    if( password !== confirmPassword) { 
-        return next( {status: STATUS.BadRequest, message: ERROR.passwordError });
-    }
+    const { login, password } = req.body; 
 
     try {
+        const duplicate = await userServices.findUser({ name: login });
+        if (duplicate) {
+            return next( {status: STATUS.Conflict, message: ERROR.userNameError } ); 
+        }
+
         const ecryptedPassword = await encryptPassword(password);
         const newUser = await userServices.createUser({
             name: login,
@@ -36,7 +37,7 @@ const renderLogin = (req, res) => {
 }
 
 const handleLogin = async(req, _res, next) => {
-    const { login, password } = req.body; //! validate body
+    const { login, password } = req.body; 
     
     try {
         const admin = await adminServices.findAdmin({ name: login });
