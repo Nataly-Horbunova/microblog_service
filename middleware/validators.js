@@ -35,7 +35,7 @@ const validateRegisterData = async (req, resp, next) => {
 
 const validateLoginData =  async (req, resp, next) => {
     let { body } = req;
-    
+
     const loginDataSchema = yup.object({
         login: yup
         .string()
@@ -59,7 +59,23 @@ const validateLoginData =  async (req, resp, next) => {
     }
 }
 
+const validateUserId = async(req, resp, next) => {
+    let { userId } = req.params;
+    const userSchema = yup
+        .string()
+        .trim()
+        .matches(/^[0-9a-fA-F]{24}$/, ERROR.userIdError);
+
+    try {
+        await userSchema.validate(userId);
+        next();
+    } catch (error) {
+        return next( {status: STATUS.BadRequest, message: error });
+    }
+}
+
 module.exports = {
     validateRegisterData,
-    validateLoginData
+    validateLoginData,
+    validateUserId
 }

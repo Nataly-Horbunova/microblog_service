@@ -24,7 +24,7 @@ const renderRoot = async(req, res, next) => {
 // User page
 const renderUserPosts = async(req, res, next) => {
     const { role = 'unsigned', userId="" } = req._auth || {};
-    const { userId: id } = req.params;
+    const { userId: id } = req.params; //! validate
 
     if (userId !== id) {
         console.log (`Vsiting with [${role}] role`);
