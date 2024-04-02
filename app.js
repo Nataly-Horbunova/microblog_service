@@ -6,10 +6,11 @@ const cookieParser = require('cookie-parser');
 const morgan = require('morgan');
 const { errorHandler, notFoundHandler} = require('./middleware/errorHandlers');
 const { jwtParser } = require('./middleware/auth');
-const cors = require('cors');
 
 const authRouter = require('./routes/auth');
 const pagesRouter = require('./routes/pages');
+const postsRouter = require('./routes/posts');
+const commentsRouter = require('./routes/comments');
 
 const app = express();
 const{ port } = server;
@@ -17,7 +18,6 @@ const{ port } = server;
 // Connect to DB
 connectDB();
 
-app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(morgan(':method :url :status '));
@@ -33,8 +33,10 @@ app.use(jwtParser);
 // Routes
 app.use('/auth', authRouter);
 app.use('/', pagesRouter);
+app.use('/api/posts', postsRouter);
+app.use('/api/comments', commentsRouter);
 
-
+// Error handling
 app.all('*', notFoundHandler);
 app.use(errorHandler);
 

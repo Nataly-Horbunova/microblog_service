@@ -7,9 +7,9 @@
                 </li>
                 <% if (typeof role !=='undefined' && role==='user' ) { %>
                     <li class="nav-list-item">
-                        <a href="/user-posts" class="nav-list-item-link">My posts</a>
+                        <a href="/user-posts/<%= userId %>" class="nav-list-item-link">My posts</a> 
                     </li>
-                    <% } %>
+                <% } %>
             </ul>
         </nav>
         <a href="/" class="header-logo-link">

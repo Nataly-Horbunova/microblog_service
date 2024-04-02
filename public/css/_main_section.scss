@@ -56,24 +56,20 @@ main{
             textarea.post-form-control{
                 min-height: 200px;
             }
+
+            .error{
+                @extend %error;
+                visibility: hidden;
+                margin-top: 10px;
+            }
         }
 
         .posts-list{
             &-item{
                 margin-top: 40px;
-
+                
                 .tittle-wrapper{
                     @include flex(flex-start, center, 30px);
-
-                    & i{
-                        color: $primary-color;
-                        cursor: pointer;
-                        transition: .2s;
-
-                        &:hover{
-                            color: transparentize($text-color-primary, 0.3);
-                        }
-                    }
                 }
 
                 .post-tittle{
@@ -144,6 +140,10 @@ main{
                             .comment-info-divider{
                                 @extend %divider;
                             }
+
+                            & i {
+                                margin-left: 30px;
+                            }
                         }
 
                         .comment-text{
@@ -169,8 +169,30 @@ main{
                             @extend %form-control-focus;
                         }
                     }
+
+                    .comment-error{
+                        @extend %error;
+                        visibility: hidden;
+                        margin-top: 10px;
+                    }
+                }
+
+                .trash-can {
+                    color: $primary-color;
+                    cursor: pointer;
+                    transition: .2s;
+
+                    &:hover{
+                        color: transparentize($text-color-primary, 0.3);
+                    }
                 }
             }
+        }
+
+        .no-posts {
+            font-size: $fz-s;
+            line-height: $lh-s;
+            margin-top: 30px;
         }
     }
 }
