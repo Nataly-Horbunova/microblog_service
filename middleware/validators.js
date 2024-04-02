@@ -2,7 +2,7 @@ const yup = require('yup');
 const  ERROR  = require('../constants/errors');
 const  STATUS  = require('../constants/statusCodes');
 
-const validateRegisterData = async (req, resp, next) => {
+const validateRegisterData = async (req, _resp, next) => {
     let { body } = req;
 
     const registerDataSchema = yup.object({
@@ -10,7 +10,6 @@ const validateRegisterData = async (req, resp, next) => {
             .string()
             .trim()
             .matches(/[a-zA-Z0-9]/, ERROR.loginValidError)
-            .min(1)
             .required(),
         password: yup
             .string()
@@ -33,7 +32,7 @@ const validateRegisterData = async (req, resp, next) => {
     }
 }
 
-const validateLoginData =  async (req, resp, next) => {
+const validateLoginData =  async (req, _resp, next) => {
     let { body } = req;
 
     const loginDataSchema = yup.object({
@@ -41,7 +40,6 @@ const validateLoginData =  async (req, resp, next) => {
         .string()
         .trim()
         .matches(/[a-zA-Z0-9]/, ERROR.loginValidError)
-        .min(1)
         .required(),
     password: yup
         .string()
@@ -59,23 +57,48 @@ const validateLoginData =  async (req, resp, next) => {
     }
 }
 
-const validateUserId = async(req, resp, next) => {
+const validateUserId = async(req, _resp, next) => {
     let { userId } = req.params;
-    const userSchema = yup
+
+    const userIdSchema = yup
         .string()
         .trim()
         .matches(/^[0-9a-fA-F]{24}$/, ERROR.userIdError);
 
     try {
-        await userSchema.validate(userId);
+        await userIdSchema.validate(userId);
         next();
     } catch (error) {
         return next( {status: STATUS.BadRequest, message: error });
     }
 }
 
+const validatePostData = async(req, _resp, next) => {
+    let { body } = req;
+
+    const postSchema = yup.object({
+        title: yup
+            .string()
+            .trim()
+            .required(),
+        content: yup
+            .string()
+            .trim()
+            .required()
+    });
+
+    try {
+        const postData = await postSchema.validate(body);
+        body=postData;
+        next();
+    } catch (error) {
+        return next ({ status: STATUS.BadRequest, message: error });
+    }
+}
+
 module.exports = {
     validateRegisterData,
     validateLoginData,
-    validateUserId
+    validateUserId,
+    validatePostData
 }

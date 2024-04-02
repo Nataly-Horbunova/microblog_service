@@ -34,8 +34,7 @@ app.use('/auth', authRouter);
 app.use('/', pagesRouter);
 app.use('/api/posts', postsRouter);
 
-
-
+// Error handling
 app.all('*', notFoundHandler);
 app.use(errorHandler);
 

@@ -10,7 +10,7 @@ const addNewPost = async (req, res, next) => {
         return next( {status: STATUS.Forbidden, message: ERROR.forbiddenError} );
     }
 
-    const { title, content } = req.body;  //! valideate body
+    const { title, content } = req.body; 
     const post = {
         title, 
         content,
@@ -31,7 +31,7 @@ const addNewPost = async (req, res, next) => {
 }
 
 const deletePost = async (req, res, next ) => {
-    const { postId } = req.params || {}; //! valideate postId
+    const { postId } = req.params || {};
 
     const deletedPost = await postsServices.deletePost(postId);
     
