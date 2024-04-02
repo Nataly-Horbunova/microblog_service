@@ -9,7 +9,9 @@ const ERROR = {
     authorizarionError: 'Authorizarion error',
     loginError: 'Invalid credentials',
     postAddingError: 'An error occured. The post has not been published.',
+    commentAddingError: 'An error occured. The comment has not been published.',
     postDeletingError: 'No post maches the indicated id.',
+    commentDeletingError: 'No comment maches the indicated id.',
     noContentError: 'No content',
     forbiddenError: 'Forbidden'    
   }

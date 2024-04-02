@@ -5,9 +5,10 @@ const addNewComment = async (newComment) => {
 }
 
 const deleteComment = async(commentId) => {
-
+    return await Comment.findByIdAndDelete(commentId);
 }
 
 module.exports = {
-    addNewComment
+    addNewComment,
+    deleteComment
 }

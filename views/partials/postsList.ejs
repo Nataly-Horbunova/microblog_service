@@ -86,7 +86,7 @@
                                             <%= formatDate(comment.date) %>
                                         </span>
                                         <% if(userId===comment.author._id.toString()) {%>
-                                            <i class="fa-regular fa-trash-can trash-can"></i>
+                                            <i class="fa-regular fa-trash-can trash-can" data-action="delete-comment" data-id=<%= comment._id %>></i>
                                             <% } %>
                                     </div>
                                     <p class="comment-text">

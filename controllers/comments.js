@@ -23,7 +23,7 @@ const addNewComment = async (req, res, next) => {
         const newComment = await commentsServices.addNewComment(comment);
 
         if (!newComment){
-            return next ({ status: STATUS.BadRequest, message: ERROR.postAddingError });
+            return next ({ status: STATUS.BadRequest, message: ERROR.commentAddingError });
         }
 
         return res.status(STATUS.Created).redirect(req.get('referer'));
@@ -33,7 +33,19 @@ const addNewComment = async (req, res, next) => {
 }
 
 const deleteComment = async (req, res, next) => {
+    const { commentId } = req.params || {};
 
+    try {
+        const deletedComment = await commentsServices.deleteComment(commentId);
+        if (!deletedComment){
+            return next ({ status: STATUS.BadRequest, message: ERROR.commentDeletingError });
+        }
+
+        res.status(STATUS.NoContent).json(deletedComment);
+
+    } catch (error) {
+        next(error);
+    }
 }
 
 module.exports = {
