@@ -89,7 +89,7 @@ main .posts-section .posts-list-item .comments-list .comments-list-item .comment
   box-shadow: none;
 }
 
-main .posts-section .post-form .error, #error {
+main .posts-section .posts-list-item .comment-form .comment-error, main .posts-section .post-form .error, #error {
   font-size: clamp(12px, 1.1666666667vw, 14px);
   color: #FE4066;
   margin-top: 4px;
@@ -344,6 +344,10 @@ main .posts-section .posts-list-item .comment-form {
 main .posts-section .posts-list-item .comment-form-label {
   margin-bottom: 10px;
   font-weight: 500;
+}
+main .posts-section .posts-list-item .comment-form .comment-error {
+  visibility: hidden;
+  margin-top: 10px;
 }
 main .posts-section .posts-list-item .trash-can {
   color: #166AEA;

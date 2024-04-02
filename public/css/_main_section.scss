@@ -169,6 +169,12 @@ main{
                             @extend %form-control-focus;
                         }
                     }
+
+                    .comment-error{
+                        @extend %error;
+                        visibility: hidden;
+                        margin-top: 10px;
+                    }
                 }
 
                 .trash-can {

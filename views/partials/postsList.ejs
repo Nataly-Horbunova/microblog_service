@@ -17,12 +17,15 @@
                         <div class="mb-3">
                             <label for="post-title" class="post-form-label">Title</label>
                             <input type="text" class="form-control post-form-control" name="title" id="post-title">
-                            <span class="error" id="title-error">The field must contain non-whitespace characters</span>
+                            <div class="error" id="title-error">The field is required and must contain non-whitespace
+                                characters</div>
                         </div>
                         <div class="mb-3">
                             <label for="post-content" class="post-form-label">Text</label>
-                            <textarea class="form-control post-form-control" name="content" id="post-content"></textarea>
-                            <span class="error" id="text-error">The field must contain non-whitespace characters</span>
+                            <textarea class="form-control post-form-control" name="content"
+                                id="post-content"></textarea>
+                            <div class="error" id="text-error">The field is required and must contain non-whitespace
+                                characters</div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="button button-secondary" data-bs-dismiss="modal">Close</button>
@@ -34,78 +37,79 @@
             </div>
         </div>
     </div>
-            <% if(posts.length> 0) { %>
-                <ul class="posts-list">
-                    <% posts.map(post=> { %>
-                        <li class="posts-list-item">
-                            <div class="tittle-wrapper">
-                                <h3 class="post-tittle">
-                                    <%= post.title %>
-                                </h3>
-                                <% if(userId===post.author._id.toString()) {%>
-                                    <i class="fa-regular fa-trash-can trash-can" data-action="delete-post"
-                                        data-id=<%=post._id %> ></i>
-                                    <% } %>
-                            </div>
-                            <div class="post-info">
-                                <span class="post-user-name">
-                                    <%= post.author.name %>
-                                </span>
-                                <span class="post-info-divider"></span>
-                                <span class="post-date">
-                                    <%= formatDate(post.date) %>
-                                </span>
-                            </div>
-                            <div class="post-text-wrapper">
-                                <p class="post-text collapse" id="collapsePost">
-                                    <%= post.content %>
-                                </p>
-                                <a class="collapsed post-text-collapse" data-bs-toggle="collapse" href="#collapsePost"
-                                    aria-expanded="false" aria-controls="collapsePost">
-                                </a>
-                            </div>
-                            <h4 class="comments-tittle" data-bs-toggle="collapse" href="#collapseComments"
-                                aria-expanded="false" aria-controls="collapseComments">
-                                Comments (
-                                <%= post.comments.length %>
-                                    ): <i class="fa-solid fa-chevron-down"></i>
-                            </h4>
-                            <div class="comments-wrapper collapse multi-collapse" id="collapseComments">
-                                <ul class="comments-list ">
-                                    <% post.comments.map(comment=> { %>
-                                        <li class="comments-list-item">
-                                            <div class="comment-info">
-                                                <span class="comment-user-name">
-                                                    <%= comment.author.name %>
-                                                </span>
-                                                <span class="comment-info-divider"></span>
-                                                <span class="comment-date">
-                                                    <%= formatDate(comment.date) %>
-                                                </span>
-                                                <% if(userId===comment.author._id.toString()) {%>
-                                                    <i class="fa-regular fa-trash-can trash-can"></i>
-                                                    <% } %>
-                                            </div>
-                                            <p class="comment-text">
-                                                <%= comment.content %>
-                                            </p>
-                                        </li>
-                                        <% }) %>
-                                </ul>
-                                <form method="post" class="comment-form">
-                                    <div class="mb-3">
-                                        <label for="comment" class="comment-form-label">Add comment</label>
-                                        <textarea class="form-control comment-form-control" name="comment" id="comment"
-                                            required></textarea>
-                                        <span class="error" id="commentError">The field must contain at least one non-whitespace character</span>
+    <% if(posts.length> 0) { %>
+        <ul class="posts-list">
+            <% posts.map(post=> { %>
+                <li class="posts-list-item">
+                    <div class="tittle-wrapper">
+                        <h3 class="post-tittle">
+                            <%= post.title %>
+                        </h3>
+                        <% if(userId===post.author._id.toString()) {%>
+                            <i class="fa-regular fa-trash-can trash-can" data-action="delete-post" data-id=<%=post._id
+                                %> ></i>
+                            <% } %>
+                    </div>
+                    <div class="post-info">
+                        <span class="post-user-name">
+                            <%= post.author.name %>
+                        </span>
+                        <span class="post-info-divider"></span>
+                        <span class="post-date">
+                            <%= formatDate(post.date) %>
+                        </span>
+                    </div>
+                    <div class="post-text-wrapper">
+                        <p class="post-text collapse" id="collapsePost">
+                            <%= post.content %>
+                        </p>
+                        <a class="collapsed post-text-collapse" data-bs-toggle="collapse" href="#collapsePost"
+                            aria-expanded="false" aria-controls="collapsePost">
+                        </a>
+                    </div>
+                    <h4 class="comments-tittle" data-bs-toggle="collapse" href="#collapseComments" aria-expanded="false"
+                        aria-controls="collapseComments">
+                        Comments (
+                        <%= post.comments.length %>
+                            ): <i class="fa-solid fa-chevron-down"></i>
+                    </h4>
+                    <div class="comments-wrapper collapse multi-collapse" id="collapseComments">
+                        <ul class="comments-list ">
+                            <% post.comments.map(comment=> { %>
+                                <li class="comments-list-item">
+                                    <div class="comment-info">
+                                        <span class="comment-user-name">
+                                            <%= comment.author.name %>
+                                        </span>
+                                        <span class="comment-info-divider"></span>
+                                        <span class="comment-date">
+                                            <%= formatDate(comment.date) %>
+                                        </span>
+                                        <% if(userId===comment.author._id.toString()) {%>
+                                            <i class="fa-regular fa-trash-can trash-can"></i>
+                                            <% } %>
                                     </div>
-                                    <button type="submit" class="button button-primary">Submit</button>
-                                </form>
+                                    <p class="comment-text">
+                                        <%= comment.content %>
+                                    </p>
+                                </li>
+                                <% }) %>
+                        </ul>
+                        <form action="/api/comments?postId=<%= post._id %>" method="post" class="comment-form">
+                            <div class="mb-3">
+                                <label for="comment-<%= post._id %>" class="comment-form-label">Add comment</label>
+                                <textarea class="form-control comment-form-control" name="content"
+                                    id="comment-<%= post._id %>"></textarea>
+                                <div class="error comment-error">The field is required and must
+                                    contain non-whitespace characters</div>
                             </div>
-                        </li>
-                        <%} ) %>
-                </ul>
-                <% } else { %>
-                    <div class="no-posts">There are no posts yet.</div>
-                    <% } %>
+                            <button type="submit" class="button button-primary">Submit</button>
+                        </form>
+                    </div>
+                </li>
+                <%} ) %>
+        </ul>
+        <% } else { %>
+            <div class="no-posts">There are no posts yet.</div>
+            <% } %>
 </div>
