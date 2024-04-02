@@ -16,14 +16,13 @@
                     <form action="/api/posts" method="post" class="post-form">
                         <div class="mb-3">
                             <label for="post-title" class="post-form-label">Title</label>
-                            <input type="text" class="form-control post-form-control" name="title" id="post-title"
-                                required pattern=".*\S+.*"
-                                title="The field must contain at least one non-whitespace characters">
+                            <input type="text" class="form-control post-form-control" name="title" id="post-title">
+                            <span class="error" id="title-error">The field must contain non-whitespace characters</span>
                         </div>
                         <div class="mb-3">
                             <label for="post-content" class="post-form-label">Text</label>
-                            <textarea class="form-control post-form-control" name="content" id="post-content"
-                                required></textarea>
+                            <textarea class="form-control post-form-control" name="content" id="post-content"></textarea>
+                            <span class="error" id="text-error">The field must contain non-whitespace characters</span>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="button button-secondary" data-bs-dismiss="modal">Close</button>
@@ -35,11 +34,6 @@
             </div>
         </div>
     </div>
-    <% if (typeof postError !=='undefined' && postError) { %>
-        <div id="error">
-            <%= postError %>
-        </div>
-        <% } %>
             <% if(posts.length> 0) { %>
                 <ul class="posts-list">
                     <% posts.map(post=> { %>
@@ -103,7 +97,7 @@
                                         <label for="comment" class="comment-form-label">Add comment</label>
                                         <textarea class="form-control comment-form-control" name="comment" id="comment"
                                             required></textarea>
-                                        <div id="error"></div>
+                                        <span class="error" id="commentError">The field must contain at least one non-whitespace character</span>
                                     </div>
                                     <button type="submit" class="button button-primary">Submit</button>
                                 </form>

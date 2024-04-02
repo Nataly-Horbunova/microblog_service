@@ -89,6 +89,12 @@ main .posts-section .posts-list-item .comments-list .comments-list-item .comment
   box-shadow: none;
 }
 
+main .posts-section .post-form .error, #error {
+  font-size: clamp(12px, 1.1666666667vw, 14px);
+  color: #FE4066;
+  margin-top: 4px;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -156,12 +162,6 @@ ul {
 }
 .button-secondary:hover {
   border-color: #166AEA;
-}
-
-#error {
-  font-size: clamp(12px, 1.1666666667vw, 14px);
-  color: #FE4066;
-  margin-top: 4px;
 }
 
 .error-container {
@@ -271,6 +271,10 @@ main .posts-section .post-form-label {
 }
 main .posts-section .post-form textarea.post-form-control {
   min-height: 200px;
+}
+main .posts-section .post-form .error {
+  visibility: hidden;
+  margin-top: 10px;
 }
 main .posts-section .posts-list-item {
   margin-top: 40px;

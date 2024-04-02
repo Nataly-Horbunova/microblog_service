@@ -73,32 +73,8 @@ const validateUserId = async(req, _resp, next) => {
     }
 }
 
-const validatePostData = async(req, res, next) => {
-    let { body } = req;
-
-    const postSchema = yup.object({
-        title: yup
-            .string()
-            .trim()
-            .required(),
-        content: yup
-            .string()
-            .trim()
-            .required()
-    });
-
-    try {
-        const postData = await postSchema.validate(body);
-        body=postData;
-        next();
-    } catch (error) {
-        return next ({ status: STATUS.BadRequest, message: error });
-    }
-}
-
 module.exports = {
     validateRegisterData,
     validateLoginData,
-    validateUserId,
-    validatePostData
+    validateUserId
 }

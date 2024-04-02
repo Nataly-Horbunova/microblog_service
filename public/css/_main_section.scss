@@ -56,6 +56,12 @@ main{
             textarea.post-form-control{
                 min-height: 200px;
             }
+
+            .error{
+                @extend %error;
+                visibility: hidden;
+                margin-top: 10px;
+            }
         }
 
         .posts-list{
