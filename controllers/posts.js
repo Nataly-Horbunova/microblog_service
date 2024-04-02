@@ -21,7 +21,7 @@ const addNewPost = async (req, res, next) => {
         const newPost = await postsServices.addNewPost(post);
 
         if (!newPost){
-            return next ({ status: STATUS.BadRequest, message: ERROR.postError });
+            return next ({ status: STATUS.BadRequest, message: ERROR.postAddingError });
         }
 
         return res.status(STATUS.Created).redirect(req.get('referer'));
@@ -33,9 +33,17 @@ const addNewPost = async (req, res, next) => {
 const deletePost = async (req, res, next ) => {
     const { postId } = req.params || {};
 
-    const deletedPost = await postsServices.deletePost(postId);
-    
+    try {
+        const deletedPost = await postsServices.deletePostAndComments(postId);
+        if (!deletedPost){
+            return next ({ status: STATUS.BadRequest, message: ERROR.postDeletingError });
+        }
 
+        res.status(STATUS.NoContent).json(deletedPost);
+
+    } catch (error) {
+        next(error);
+    }
 }
 
 module.exports = {

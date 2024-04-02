@@ -22,9 +22,8 @@
                         </div>
                         <div class="mb-3">
                             <label for="post-content" class="post-form-label">Text</label>
-                            <textarea class="form-control post-form-control" name="content" id="post-content" required
-                                pattern=".*\S+.*" title="The field must contain at least one non-whitespace characters">
-                                    </textarea>
+                            <textarea class="form-control post-form-control" name="content" id="post-content"
+                                required></textarea>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="button button-secondary" data-bs-dismiss="modal">Close</button>
@@ -50,7 +49,8 @@
                                     <%= post.title %>
                                 </h3>
                                 <% if(userId===post.author._id.toString()) {%>
-                                    <i class="fa-regular fa-trash-can trash-can"></i>
+                                    <i class="fa-regular fa-trash-can trash-can" data-action="delete-post"
+                                        data-id=<%=post._id %> ></i>
                                     <% } %>
                             </div>
                             <div class="post-info">

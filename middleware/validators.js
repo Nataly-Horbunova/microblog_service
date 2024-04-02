@@ -73,7 +73,7 @@ const validateUserId = async(req, _resp, next) => {
     }
 }
 
-const validatePostData = async(req, _resp, next) => {
+const validatePostData = async(req, res, next) => {
     let { body } = req;
 
     const postSchema = yup.object({

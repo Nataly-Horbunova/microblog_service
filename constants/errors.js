@@ -8,7 +8,8 @@ const ERROR = {
     notFoundError: 'Page not found',
     authorizarionError: 'Authorizarion error',
     loginError: 'Invalid credentials',
-    postError: 'An error occured. Your post has not been published.',
+    postAddingError: 'An error occured. The post has not been published.',
+    postDeletingError: 'No post maches the indicated id.',
     noContentError: 'No content',
     forbiddenError: 'Forbidden'    
   }

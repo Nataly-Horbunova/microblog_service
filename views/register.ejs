@@ -15,10 +15,16 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- ---------- Custom styles ------------ -->
     <link rel="stylesheet" href="/css/main.css">
+
+    <!-- --------- Bootstrap ------------- -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"
+        defer>
+        </script>
 </head>
 
 <body>
-    <%- include('./partials/header',  { login: true, register: false, role: 'unsigned' }) %>
+    <%- include('./partials/header', { login: true, register: false, role: 'unsigned' }) %>
         <main>
             <div class="container register-container">
                 <div class="register-wrapper">
@@ -37,11 +43,11 @@
                             <label for="user_confirm_password" class="register-form-label">Confirm password</label>
                             <input type="password" class="form-control register-form-control" name="confirmPassword"
                                 id="user_confirm_password" required>
-                            <% if (typeof err !=='undefined' && err) { %> 
+                            <% if (typeof err !=='undefined' && err) { %>
                                 <div id="error">
                                     <%= err %>
                                 </div>
-                            <% } %>
+                                <% } %>
                         </div>
                         <button type="submit" class="button button-primary register-button">Register</button>
                     </form>
@@ -56,12 +62,6 @@
 
         </main>
         <%- include('./partials/footer') %>
-
-            <!-- --------- Bootstrap ------------- -->
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-                integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-                crossorigin="anonymous">
-                </script>
 </body>
 
 </html>
