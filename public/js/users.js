@@ -1,6 +1,5 @@
 const usersList = document.querySelector('.users-list');
 
-
 // Delete user handler
 usersList.addEventListener('click', async (e) => {
     console.log('hello listener');

@@ -5,6 +5,7 @@ const userServices = require('../services/users');
 const adminServices = require('../services/admins');
 const { isTokenExpired, veryfyJwt } = require('../utils/auth');
 
+//  Token session
 const tokenSession = async (req, res, next) =>{
     const { role, userId } = req._auth || {};
 
@@ -34,6 +35,7 @@ const tokenSession = async (req, res, next) =>{
     return res.redirect(redirectTo);
 }
 
+//  JWT parser
 const jwtParser = async (req, res, next) => {
     const { refreshToken = '', accessToken ='' } = req.cookies;
 
@@ -86,6 +88,7 @@ const jwtParser = async (req, res, next) => {
     next();
 }
 
+// Protecting route
 const protectedRoute = (allowedRoles = [], redirectTo = '/auth/login') => function (req, resp, next) {
     const { role = 'unsigned' } = req._auth || {};
 

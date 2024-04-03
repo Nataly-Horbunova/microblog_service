@@ -3,10 +3,10 @@ module.exports = {
         port: process.env.PORT || 3000
     },
     storage: {
-        uri: process.env.MONGO_DB_URI,
+        uri: process.env.MONGO_DB_URI || '',
         name: process.env.MONGO_DB_NAME || ''
     },
     auth: {
-        jwtSecret: process.env.REFRESH_TOKEN_SECRET
+        jwtSecret: process.env.REFRESH_TOKEN_SECRET || ''
     }
 }

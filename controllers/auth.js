@@ -5,6 +5,8 @@ const { encryptPassword, checkPassword } = require('../utils/auth');
 const userServices = require('../services/users');
 const adminServices = require('../services/admins');
 
+// Registartion
+
 const renderRegister = (_req, res, next) => {
     return res.render('register');
 }
@@ -32,6 +34,7 @@ const handleRegister = async (req, _res, next) => {
     }
 }
 
+// Login
 const renderLogin = (req, res) => {
     return res.render('login');
 }
@@ -73,6 +76,7 @@ const handleLogin = async(req, _res, next) => {
     }
 }
 
+// Logout
 const handleLogout = async (req, res, next) => {
     const { accessToken ="", refreshToken="" } = req.cookies || {};
 
