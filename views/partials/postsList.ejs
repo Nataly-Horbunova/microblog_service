@@ -60,21 +60,21 @@
                         </span>
                     </div>
                     <div class="post-text-wrapper">
-                        <p class="post-text collapse" id="collapsePost">
+                        <p class="post-text collapse" id="collapsePost<%= post._id %>">
                             <%= post.content %>
                         </p>
-                        <a class="collapsed post-text-collapse" data-bs-toggle="collapse" href="#collapsePost"
+                        <a class="collapsed post-text-collapse" data-bs-toggle="collapse" href="#collapsePost<%= post._id %>"
                             aria-expanded="false" aria-controls="collapsePost">
                         </a>
                     </div>
-                    <h4 class="comments-tittle" data-bs-toggle="collapse" href="#collapseComments" aria-expanded="false"
+                    <h4 class="comments-tittle" data-bs-toggle="collapse" href="#collapseComments<%= post._id %>" aria-expanded="false"
                         aria-controls="collapseComments">
                         Comments (
                         <%= post.comments.length %>
                             ): <i class="fa-solid fa-chevron-down"></i>
                     </h4>
-                    <div class="comments-wrapper collapse multi-collapse" id="collapseComments">
-                        <ul class="comments-list ">
+                    <div class="comments-wrapper collapse multi-collapse" id="collapseComments<%= post._id %>">
+                        <ul class="comments-list">
                             <% post.comments.map(comment=> { %>
                                 <li class="comments-list-item">
                                     <div class="comment-info">
