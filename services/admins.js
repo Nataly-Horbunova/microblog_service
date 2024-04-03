@@ -9,12 +9,12 @@ const updateAdmin = async (admin, updateKey, updateValue) => {
     await admin.save();
 }
 
-const findAdminAndUpdate = async (filter, update) => {
+const findAndUpdate = async (filter, update) => {
     return await Admin.findOneAndUpdate(filter, update, { new: true });
 }
 
 module.exports = {
-    findAdminAndUpdate,
+    findAndUpdate,
     updateAdmin,
     findAdmin
 }
