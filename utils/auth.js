@@ -2,6 +2,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const { auth } = require('config'); 
 
+const secret = auth.jwtSecret;
 
 const encryptPassword = async (plainTextPass) => {
     const salt = await bcrypt.genSalt(10);
@@ -17,8 +18,6 @@ const checkPassword = async (plainTextPass, encryptedPass) => {
         return false;
     }
 }
-
-const secret = auth.jwtSecret;
 
 const issueAccessJwt = (data) => {
     return jwt.sign( data, secret, {expiresIn: '15s'});

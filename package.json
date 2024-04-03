@@ -21,6 +21,7 @@
     "mongodb": "^6.5.0",
     "mongoose": "^8.2.2",
     "morgan": "^1.10.0",
+    "rotating-file-stream": "^3.2.1",
     "yup": "^1.4.0"
   },
   "devDependencies": {

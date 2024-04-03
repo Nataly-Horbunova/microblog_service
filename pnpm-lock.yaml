@@ -35,6 +35,9 @@ dependencies:
   morgan:
     specifier: ^1.10.0
     version: 1.10.0
+  rotating-file-stream:
+    specifier: ^3.2.1
+    version: 3.2.1
   yup:
     specifier: ^1.4.0
     version: 1.4.0
@@ -1173,6 +1176,11 @@ packages:
     hasBin: true
     dependencies:
       glob: 7.2.3
+    dev: false
+
+  /rotating-file-stream@3.2.1:
+    resolution: {integrity: sha512-n2B18CJb+n2VA5Tdle+1NP2toEcRv68CjAOBjHmwcyswNwMVsrN3gVRZ9ymH3sapaiGY8jc9OhhV5b6I5rAeiA==}
+    engines: {node: '>=14.0'}
     dev: false
 
   /safe-buffer@5.1.2:
