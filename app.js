@@ -2,8 +2,10 @@ require('dotenv').config();
 const express = require('express');
 const { server } = require('config');
 const connectDB = require('./config/db');
-const cookieParser = require('cookie-parser');
+const rfs = require("rotating-file-stream");
 const morgan = require('morgan');
+const path = require('path');
+const cookieParser = require('cookie-parser');
 const { errorHandler, notFoundHandler} = require('./middleware/errorHandlers');
 const { jwtParser } = require('./middleware/auth');
 
@@ -21,8 +23,16 @@ connectDB();
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
-app.use(morgan(':method :url :status '));
 
+// Morgan logging
+const accessLogStream = rfs.createStream('access.log', {
+    interval: '1d', 
+    path: path.join(__dirname, 'logs')
+    });
+app.use(morgan('dev', { skip: function (_req, res) { return res.statusCode < 400 }}));
+app.use(morgan(':date[iso] :method :url :status :res[content-length] :response-time ms', { stream: accessLogStream }));
+
+// Static files serving
 app.use(express.static('./public'));
 
 // Template engine
