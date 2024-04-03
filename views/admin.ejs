@@ -21,6 +21,11 @@
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"
         defer>
         </script>
+
+    <!-- ----------- Custom scripts --------- -->
+    <script src="/js/helpers.js" defer></script>
+    <script src="/js/users.js" defer></script>
+
 </head>
 
 <body>
@@ -28,17 +33,21 @@
         <main>
             <div class="container admin-container">
                 <h3 class="users-list-tittle">Manage users</h3>
-                <ul class="users-list">
-                    <li class="users-list-item">
-                        <span class="user-name">Alison Jonson</span>
-                        <i class="fa-regular fa-trash-can"></i>
-                    </li>
-                    <li class="users-list-item">
-                        <span class="user-name">John Green</span>
-                        <i class="fa-regular fa-trash-can"></i>
-                    </li>
-
-                </ul>
+                <% if (users.length> 0) {%>
+                    <ul class="users-list">
+                        <% users.map(user=> { %>
+                            <li class="users-list-item">
+                                <span class="user-name">
+                                    <%= user.name %>
+                                </span>
+                                <i class="fa-regular fa-trash-can trash-can" data-action="delete-user" data-id=<%= user.id %>
+                                    ></i></i>
+                            </li>
+                            <% }) %>
+                    </ul>
+                    <% } else { %>
+                        <div class="no-users">There are no users yet.</div>
+                        <% } %>
             </div>
 
 

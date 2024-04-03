@@ -11,6 +11,7 @@ const authRouter = require('./routes/auth');
 const pagesRouter = require('./routes/pages');
 const postsRouter = require('./routes/posts');
 const commentsRouter = require('./routes/comments');
+const usersRouter = require('./routes/users');
 
 const app = express();
 const{ port } = server;
@@ -35,6 +36,7 @@ app.use('/auth', authRouter);
 app.use('/', pagesRouter);
 app.use('/api/posts', postsRouter);
 app.use('/api/comments', commentsRouter);
+app.use('/api/users', usersRouter);
 
 // Error handling
 app.all('*', notFoundHandler);

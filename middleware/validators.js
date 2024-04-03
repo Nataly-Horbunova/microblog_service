@@ -57,7 +57,7 @@ const validateLoginData =  async (req, _resp, next) => {
     }
 }
 
-const validateUserId = async(req, _resp, next) => {
+const validateId = async(req, _resp, next) => {
     let { userId } = req.params;
 
     const userIdSchema = yup
@@ -76,5 +76,5 @@ const validateUserId = async(req, _resp, next) => {
 module.exports = {
     validateRegisterData,
     validateLoginData,
-    validateUserId
+    validateId
 }

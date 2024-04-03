@@ -50,7 +50,7 @@ const handleLogin = async(req, _res, next) => {
             }
 
             req._auth = { role: 'admin', userId: admin._id };
-            next();
+            return next();
         }
 
         const user = await userServices.findUser({ name: login });
@@ -66,7 +66,7 @@ const handleLogin = async(req, _res, next) => {
         }
 
         req._auth = { role: 'user', userId: user._id };
-        next();
+        return next();
 
     } catch (error) { 
         next(error);
@@ -74,7 +74,7 @@ const handleLogin = async(req, _res, next) => {
 }
 
 const handleLogout = async (req, res, next) => {
-    const { accessToken, refreshToken } = req.cookies;
+    const { accessToken ="", refreshToken="" } = req.cookies || {};
 
     if (accessToken) {
         res.clearCookie('accessToken', accessToken, { httpOnly: true, secure: true, sameSite: 'strict' });
