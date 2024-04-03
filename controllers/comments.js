@@ -5,7 +5,8 @@ const STATUS  = require('../constants/statusCodes');
 const addNewComment = async (req, res, next) => {
     const { userId="" } = req._auth || {};
 
-    if(!userId) {  
+    //! also, you have protectedRoute middleware before this handler, so - do you really need to check a userId here? ))
+    if(!userId) {
         console.log('The user is posssibly not logged in');
         return next( {status: STATUS.Forbidden, message: ERROR.forbiddenError} );
     }
@@ -21,7 +22,6 @@ const addNewComment = async (req, res, next) => {
 
     try {
         const newComment = await commentsServices.addNewComment(comment);
-
         if (!newComment){
             return next ({ status: STATUS.BadRequest, message: ERROR.commentAddingError });
         }
