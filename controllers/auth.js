@@ -1,7 +1,7 @@
 
 const ERROR = require('../constants/errors');
 const STATUS  = require('../constants/statusCodes');
-const { encryptPassword, checkPassword } = require('../utils/auth');
+const { encryptPassword, checkPassword, tokenOptions } = require('../utils/auth');
 const userServices = require('../services/users');
 const adminServices = require('../services/admins');
 
@@ -12,12 +12,12 @@ const renderRegister = (_req, res, next) => {
 }
 
 const handleRegister = async (req, _res, next) => {
-    const { login, password } = req.body; 
+    const { login, password } = req.body;
 
     try {
         const duplicate = await userServices.findUser({ name: login });
         if (duplicate) {
-            return next( {status: STATUS.Conflict, message: ERROR.userNameError } ); 
+            return next( {status: STATUS.Conflict, message: ERROR.userNameError } );
         }
 
         const ecryptedPassword = await encryptPassword(password);
@@ -29,7 +29,7 @@ const handleRegister = async (req, _res, next) => {
         req._auth = { role: 'user', userId: newUser._id };
         next();
 
-    } catch (error) { 
+    } catch (error) {
         next(error);
     }
 }
@@ -40,11 +40,10 @@ const renderLogin = (req, res) => {
 }
 
 const handleLogin = async(req, _res, next) => {
-    const { login, password } = req.body; 
-    
+    const { login, password } = req.body;
+
     try {
         const admin = await adminServices.findAdmin({ name: login });
-
         if (admin) {
             isPassValid = await checkPassword(password, admin.password);
 
@@ -57,13 +56,11 @@ const handleLogin = async(req, _res, next) => {
         }
 
         const user = await userServices.findUser({ name: login });
-
         if (!user) {
             return next({ status: STATUS.Unauthorized , message: ERROR.loginError });
         }
 
         isPassValid = await checkPassword(password, user.password);
-
         if (!isPassValid) {
             return next({ message: ERROR.loginError });
         }
@@ -71,34 +68,37 @@ const handleLogin = async(req, _res, next) => {
         req._auth = { role: 'user', userId: user._id };
         return next();
 
-    } catch (error) { 
+    } catch (error) {
         next(error);
     }
 }
 
 // Logout
 const handleLogout = async (req, res, next) => {
-    const { accessToken ="", refreshToken="" } = req.cookies || {};
+    const { accessToken = "", refreshToken = "" } = req.cookies || {};
 
     if (accessToken) {
-        res.clearCookie('accessToken', accessToken, { httpOnly: true, secure: true, sameSite: 'strict' });
+        res.clearCookie('accessToken', accessToken, tokenOptions);
     }
 
-    if (refreshToken) {
-        res.clearCookie('refreshToken', refreshToken, { httpOnly: true, secure: true, sameSite: 'strict' });
+    if (!refreshToken) {
+        return res.redirect('/');
     }
+
+    res.clearCookie('refreshToken', refreshToken, tokenOptions);
 
     try {
         const user = await userServices.findUser({ refreshToken });
         const admin = await adminServices.findAdmin({ refreshToken });
-    
+
         if (user) {
+
             await userServices.updateUser(user, 'refreshToken', '');
         }
-    
+
         if (admin) {
             await adminServices.updateAdmin(admin, 'refreshToken', '');
-        } 
+        }
 
         return res.redirect('/');
 

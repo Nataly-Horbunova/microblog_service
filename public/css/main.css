@@ -355,7 +355,7 @@ main .posts-section .posts-list-item .trash-can {
   transition: 0.2s;
 }
 main .posts-section .posts-list-item .trash-can:hover {
-  color: rgba(25, 28, 30, 0.7);
+  color: #FE4066;
 }
 main .posts-section .no-posts {
   font-size: clamp(16px, 1.6666666667vw, 20px);
@@ -396,7 +396,7 @@ main .posts-section .no-posts {
   transition: 0.2s;
 }
 .admin-container .users-list-item i:hover {
-  color: rgba(25, 28, 30, 0.7);
+  color: #FE4066;
 }
 .admin-container .no-users {
   font-size: clamp(16px, 1.6666666667vw, 20px);

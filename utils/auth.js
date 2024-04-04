@@ -1,6 +1,6 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const { auth } = require('config'); 
+const { auth } = require('config');
 
 const secret = auth.jwtSecret;
 
@@ -29,16 +29,16 @@ const issueRefreshJwt = (data) => {
 
 const isTokenExpired = (token) => {
     const decodedToken = jwt.decode(token);
-    
+
     if (!decodedToken || !decodedToken.exp) {
-        return true; 
+        return true;
     }
 
-    const currentTime = Date.now() / 1000; 
+    const currentTime = Date.now() / 1000;
     return decodedToken.exp < currentTime;
 }
 
-const veryfyJwt = (token) => { 
+const veryfyJwt = (token) => {
     let data = {};
 
     if (!token) {
@@ -55,11 +55,14 @@ const veryfyJwt = (token) => {
     return data;
 }
 
+const tokenOptions = { httpOnly: true, secure: true, sameSite: 'strict' };
+
 module.exports = {
     encryptPassword,
     checkPassword,
     issueAccessJwt,
     issueRefreshJwt,
     isTokenExpired,
-    veryfyJwt
+    veryfyJwt,
+    tokenOptions
 }

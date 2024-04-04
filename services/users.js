@@ -17,17 +17,17 @@ const updateUser = async (user, updateKey, updateValue) => {
 }
 
 const createUser = async (newUser) => {
-    return await User.create(newUser); 
+    return await User.create(newUser);
 }
 
-const findUserAndUpdate = async (filter, update) => {
+const findAndUpdate = async (filter, update) => {
     return await User.findOneAndUpdate(filter, update, { new: true });
 }
 
 const deleteUser = async(id) => {
     const session = await mongoose.startSession();
     session.startTransaction();
-    
+
     try {
         await Comment.deleteMany({ author: id }, { session });
         await Post.deleteMany({ author: id }, { session });
@@ -47,6 +47,6 @@ module.exports = {
     findUser,
     updateUser,
     createUser,
-    findUserAndUpdate,
+    findAndUpdate,
     deleteUser
 }
