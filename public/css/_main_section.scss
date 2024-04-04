@@ -183,7 +183,7 @@ main{
                     transition: .2s;
 
                     &:hover{
-                        color: transparentize($text-color-primary, 0.3);
+                        color: $error-color;
                     }
                 }
             }
