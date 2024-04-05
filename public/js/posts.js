@@ -2,7 +2,6 @@ const postsForm = document.querySelector('.post-form');
 
 // Post form validation
 postsForm.addEventListener('submit', (e) => {
-    console.log(postsForm.title);
 
     validateElement(postsForm.title, '#title-error');
     validateElement(postsForm.content, '#text-error');
